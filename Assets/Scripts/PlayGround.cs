@@ -6,7 +6,7 @@ public class PlayGround : MonoBehaviour
 {
     public Tilemap tilemap { get; private set; }
     public SnakesManger snakesManger { get; private set; }
-    public Vector2Int boardSize = new Vector2Int(10, 20);
+    public Vector2Int boardSize;
     public TileColorItem[] colorItems;
 
     public RectInt Bounds {

@@ -8,11 +8,20 @@ public class Snake: GameItem{
 	public int atColumn { get; private set;}
 	public SnakeData data {get; private set;}
 	private Vector2Int latestDirection;
+	private SwipeManager swipeManager;
 	public Snake(PlayGround board, SnakesManger manager, int atColumn) {
 		this.board = board;
 		this.atColumn = atColumn;
 		this.manager = manager;
 		this.Reset();
+
+		swipeManager = new SwipeManager(new SwipeManager.OnSwipeHandler(
+			() => { this.Move(Vector2Int.up); },
+			() => { this.Move(Vector2Int.down); },
+			() => { this.Move(Vector2Int.left); },
+			() => { this.Move(Vector2Int.right); }
+		));
+
 	}
 
 	public void Reset() {
@@ -67,9 +76,10 @@ public class Snake: GameItem{
 		if (head == null) {
 			return OccupiedType.None;
 		}
-		// if (manager.IsOccupiedByAllSnakes(head)) {
-		// 	return OccupiedType.Crash;
-		// }
+
+		if (manager.IsOccupiedByAllSnakes(head)) {
+			return OccupiedType.Crash;
+		}
 
 		bool outOfBound = !bounds.Contains((Vector2Int)head);
 		bool occupied = tilemap.HasTile(head);
@@ -80,14 +90,14 @@ public class Snake: GameItem{
 	public List<Vector3Int> GetPositionsToSettleDown() {
 		Queue<Vector3Int> snakeBody = this.data.position;
 		List<Vector3Int> positions = new List<Vector3Int>();
-		while (snakeBody.Count > 0) {
-			Vector3Int pos = snakeBody.Dequeue();
-			positions.Add(pos);
+		foreach (var item in snakeBody.ToArray()) {
+			positions.Add(item);
 		}
 		return positions;
 	}
 
 	public void OnHandleInput() {
+		this.swipeManager.Update();
 		Vector2Int? translation = KeyUtils.GetBasicDirectionOnArrow();
         if (translation != null) {
             this.Move(translation ?? new Vector2Int(0, 0));
@@ -100,6 +110,7 @@ public class Snake: GameItem{
 				return true;
 			}
 		}
+
 		return false;
 	}
 
