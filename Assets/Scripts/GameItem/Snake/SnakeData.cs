@@ -9,12 +9,12 @@ public class SnakeData {
 	public Vector3Int head {get; private set;}
 	public Vector3Int nextHead;
 
-	public SnakeData(Tile tile, int length) {
+	public SnakeData(Tile tile, int length, int atColumn) {
 		this.tile = tile;
 		this.length = length;
 		position = new Queue<Vector3Int>();
 
-		Vector3Int basePosition = new Vector3Int(0, 10, 0);
+		Vector3Int basePosition = new Vector3Int(atColumn, 9, 0);
 		while (length > 0) {
 			head = new Vector3Int(basePosition.x, basePosition.y, basePosition.z);
 			position.Enqueue(head);

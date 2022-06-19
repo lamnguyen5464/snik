@@ -50,7 +50,6 @@ public class Board : MonoBehaviour
                 this.LineClear(row);
             }
         }
-        gameItem.Reset();
     }
 
     public void SpawnPiece()

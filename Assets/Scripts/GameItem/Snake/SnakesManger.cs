@@ -5,11 +5,13 @@ using UnityEngine;
 public class SnakesManger : MonoBehaviour {
     // Start is called before the first frame update
     private Board board;
-    private Snake snake;
+    private Snake firstSnake;
+    private SecondSnake secondSnake;
 
     public void Initialize(Board board) {
         this.board = board;
-        snake = new Snake(board, true);
+        firstSnake = new Snake(board, this, 2);
+        secondSnake = new SecondSnake(board, this, -2);
     }
 
     void Start() {
@@ -17,15 +19,23 @@ public class SnakesManger : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        snake.OnClear(board.tilemap);
-        this.HandleInput();
-        snake.OnDraw(board.tilemap);
+        firstSnake.OnClear(board.tilemap);
+        secondSnake.OnClear(board.tilemap);
+
+        firstSnake.OnHandleInput();
+        secondSnake.OnHandleInput();
+
+        firstSnake.OnDraw(board.tilemap);
+        secondSnake.OnDraw(board.tilemap);
     }
 
-    private void HandleInput() {
-        Vector2Int? translation = KeyUtils.GetBasicDirectionOnKey();
-        if (translation != null) {
-            this.snake.Move(translation ?? new Vector2Int(0, 0));
-        }
+    public bool IsOccupiedByAllSnakes(Vector3Int cell) {
+        return (this.firstSnake.IsOccupied(cell) || this.secondSnake.IsOccupied(cell));
     }
+
+    public void Reset() {
+        this.firstSnake.Reset();
+        this.secondSnake.Reset();
+    }
+
 }

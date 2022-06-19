@@ -4,18 +4,20 @@ using System.Collections.Generic;
 
 public class Snake: GameItem{
 	public Board board { get; private set;}
-	public bool isMySnake { get; private set;}
+	private SnakesManger manager;
+	public int atColumn { get; private set;}
 	public SnakeData data {get; private set;}
 	private Vector2Int latestDirection;
-	public Snake(Board board, bool isMySnake) {
+	public Snake(Board board, SnakesManger manager, int atColumn) {
 		this.board = board;
-		this.isMySnake = isMySnake;
+		this.atColumn = atColumn;
+		this.manager = manager;
 		this.Reset();
 	}
 
 	public void Reset() {
-		Tile tileColor = this.board.colorItems[this.isMySnake ? 0 : 1].tile;
-		this.data = new SnakeData(tileColor, 5);
+		Tile tileColor = this.board.colorItems[this.atColumn < 0 ? 0 : 1].tile;
+		this.data = new SnakeData(tileColor, 5, this.atColumn);
 	}
 
 	public void Move(Vector2Int dir) {
@@ -31,10 +33,20 @@ public class Snake: GameItem{
         newPosition.x += dir.x;
         newPosition.y += dir.y;
 		this.data.nextHead = newPosition;
-		if (this.IsValidPosition(board.tilemap, board.Bounds)){
-			this.data.MoveTo(newPosition);
-		} else {
-			this.board.OnSettleDown(this);
+		OccupiedType occupiedType = this.checkOccupation(board.tilemap, board.Bounds);
+		switch (occupiedType) {
+			case OccupiedType.None:
+				this.data.MoveTo(newPosition);
+				break;
+			case OccupiedType.Built:
+				this.board.OnSettleDown(this);
+				this.manager.Reset();
+				break;
+			case OccupiedType.Crash:
+				this.Reset();
+				break;
+			default:
+				break;
 		}
 	}
 
@@ -50,12 +62,19 @@ public class Snake: GameItem{
 		}
 	}
 
-	public bool IsValidPosition(Tilemap tilemap, RectInt bounds) {
+	public OccupiedType checkOccupation(Tilemap tilemap, RectInt bounds) {
 		Vector3Int head = this.data.nextHead;
+		if (head == null) {
+			return OccupiedType.None;
+		}
+		// if (manager.IsOccupiedByAllSnakes(head)) {
+		// 	return OccupiedType.Crash;
+		// }
+
 		bool outOfBound = !bounds.Contains((Vector2Int)head);
 		bool occupied = tilemap.HasTile(head);
 
-		return (!outOfBound && !occupied);
+		return (outOfBound || occupied) ? OccupiedType.Built : OccupiedType.None;
 	}
 
 	public List<Vector3Int> GetPositionsToSettleDown() {
@@ -67,4 +86,21 @@ public class Snake: GameItem{
 		}
 		return positions;
 	}
+
+	public void OnHandleInput() {
+		Vector2Int? translation = KeyUtils.GetBasicDirectionOnArrow();
+        if (translation != null) {
+            this.Move(translation ?? new Vector2Int(0, 0));
+        }
+	}
+
+	public bool IsOccupied(Vector3Int cell) {
+		foreach (var pos in this.GetPositionsToSettleDown()) {
+            if (pos.x == cell.x && pos.y == cell.y) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 }
