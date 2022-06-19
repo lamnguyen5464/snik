@@ -5,20 +5,20 @@ using System.Collections.Generic;
 public class SnakeData {
 	public Tile tile {get; private set;}
 	private int length;
-
 	public Queue<Vector3Int> position {get; private set;}
 	public Vector3Int head {get; private set;}
+	public Vector3Int nextHead;
 
 	public SnakeData(Tile tile, int length) {
 		this.tile = tile;
 		this.length = length;
 		position = new Queue<Vector3Int>();
 
-		Vector3Int basePosition = new Vector3Int(8, 8, 0);
+		Vector3Int basePosition = new Vector3Int(0, 10, 0);
 		while (length > 0) {
 			head = new Vector3Int(basePosition.x, basePosition.y, basePosition.z);
 			position.Enqueue(head);
-			basePosition.y = basePosition.y + 1;
+			basePosition.y = basePosition.y - 1;
 			length = length - 1;
 		}
 	}

@@ -38,36 +38,36 @@ public class Piece : MonoBehaviour
 
     private void Update()
     {
-        board.Clear(this);
+        // board.Clear(this);
 
-        // We use a timer to allow the player to make adjustments to the piece
-        // before it locks in place
-        lockTime += Time.deltaTime;
+        // // We use a timer to allow the player to make adjustments to the piece
+        // // before it locks in place
+        // lockTime += Time.deltaTime;
 
-        // Handle rotation
-        if (Input.GetKeyDown(KeyCode.Q)) {
-            Rotate(-1);
-        } else if (Input.GetKeyDown(KeyCode.E)) {
-            Rotate(1);
-        }
+        // // Handle rotation
+        // if (Input.GetKeyDown(KeyCode.Q)) {
+        //     Rotate(-1);
+        // } else if (Input.GetKeyDown(KeyCode.E)) {
+        //     Rotate(1);
+        // }
 
-        // Handle hard drop
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            HardDrop();
-        }
+        // // Handle hard drop
+        // if (Input.GetKeyDown(KeyCode.Space)) {
+        //     HardDrop();
+        // }
 
-        // Allow the player to hold movement keys but only after a move delay
-        // so it does not move too fast
-        if (Time.time > moveTime) {
-            HandleMoveInputs();
-        }
+        // // Allow the player to hold movement keys but only after a move delay
+        // // so it does not move too fast
+        // if (Time.time > moveTime) {
+        //     HandleMoveInputs();
+        // }
 
-        // Advance the piece to the next row every x seconds
-        if (Time.time > stepTime) {
-            Step();
-        }
+        // // Advance the piece to the next row every x seconds
+        // if (Time.time > stepTime) {
+        //     Step();
+        // }
 
-        board.Set(this);
+        // board.Set(this);
     }
 
     private void HandleMoveInputs()

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using System.Collections.Generic;
 
 public class Board : MonoBehaviour
 {
@@ -23,7 +24,6 @@ public class Board : MonoBehaviour
     private void Awake()
     {
         tilemap = GetComponentInChildren<Tilemap>();
-        activePiece = GetComponentInChildren<Piece>();
         snakesManger = GetComponentInChildren<SnakesManger>();
 
         snakesManger.Initialize(this);
@@ -39,18 +39,22 @@ public class Board : MonoBehaviour
         SpawnPiece();
     }
 
+    public void OnSettleDown(GameItem gameItem) {
+		List<Vector3Int> positions = gameItem.GetPositionsToSettleDown();
+        foreach(var pos in positions) {
+            Tile defaultBrick = colorItems[3].tile;
+            tilemap.SetTile(pos, defaultBrick);
+            // check for + score
+            int row = pos.y;
+            if (this.IsLineFull(row)){
+                this.LineClear(row);
+            }
+        }
+        gameItem.Reset();
+    }
+
     public void SpawnPiece()
     {
-        int random = Random.Range(0, tetrominoes.Length);
-        TetrominoData data = tetrominoes[random];
-
-        activePiece.Initialize(this, spawnPosition, data);
-
-        if (IsValidPosition(activePiece, spawnPosition)) {
-            Set(activePiece);
-        } else {
-            GameOver();
-        }
     }
 
     public void GameOver()
