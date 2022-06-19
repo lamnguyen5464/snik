@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class SnakesManger : MonoBehaviour {
     // Start is called before the first frame update
-    private Board board;
+    private PlayGround board;
     private Snake firstSnake;
     private SecondSnake secondSnake;
 
-    public void Initialize(Board board) {
+    public void Initialize(PlayGround board) {
         this.board = board;
         firstSnake = new Snake(board, this, 2);
         secondSnake = new SecondSnake(board, this, -2);

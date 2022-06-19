@@ -3,12 +3,12 @@ using UnityEngine.Tilemaps;
 using System.Collections.Generic;
 
 public class Snake: GameItem{
-	public Board board { get; private set;}
+	public PlayGround board { get; private set;}
 	private SnakesManger manager;
 	public int atColumn { get; private set;}
 	public SnakeData data {get; private set;}
 	private Vector2Int latestDirection;
-	public Snake(Board board, SnakesManger manager, int atColumn) {
+	public Snake(PlayGround board, SnakesManger manager, int atColumn) {
 		this.board = board;
 		this.atColumn = atColumn;
 		this.manager = manager;

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SecondSnake : Snake {
 
-	public SecondSnake(Board board, SnakesManger manager, int atColumn): base(board, manager, atColumn) {
+	public SecondSnake(PlayGround board, SnakesManger manager, int atColumn): base(board, manager, atColumn) {
 	}
 
 	public void OnHandleInput() {
