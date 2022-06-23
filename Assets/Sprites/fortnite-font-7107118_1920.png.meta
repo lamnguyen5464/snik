@@ -1,0 +1,1090 @@
+fileFormatVersion: 2
+guid: e01b94783ac369540ad7e30e7bf095f0
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_0
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 1018
+        width: 82
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd906af40da6209419ffe4b504780ca7
+      internalID: -380005767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_1
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 1018
+        width: 76
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddb2db9011c51ea43ab173ec1d095fe3
+      internalID: -582370178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_2
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 1017
+        width: 78
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 556304360d3927e4484376730b3d1569
+      internalID: -1976863931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_3
+      rect:
+        serializedVersion: 2
+        x: 801
+        y: 1022
+        width: 78
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94b5ca653bf444e44b5ff6292a868fbb
+      internalID: 863748240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_4
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 1019
+        width: 60
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34cd3e292fcd8844e8f2aab353bc8b53
+      internalID: 82151206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_5
+      rect:
+        serializedVersion: 2
+        x: 1291
+        y: 1022
+        width: 58
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c2ffbbed5531d142a883e150848f8c2
+      internalID: 63882314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_6
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 1017
+        width: 78
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fccd9afdb496424898bb7504ac1e2d1
+      internalID: 1840214743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_7
+      rect:
+        serializedVersion: 2
+        x: 1763
+        y: 1019
+        width: 74
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b284a36ebccf3a74994cb19dc3a677d9
+      internalID: -108340843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_8
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 782
+        width: 36
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 906ee59f99b59d242b4105a6bd87df7a
+      internalID: -2141663571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_9
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 778
+        width: 70
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92643f05ee2aaac4a8d70c308fbc82f8
+      internalID: 2065167817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_10
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 777
+        width: 76
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac7697ffae7665049ac6648d2f06abc8
+      internalID: -27705633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_11
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 783
+        width: 60
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fc28cc408bd8bd45888dced985611be
+      internalID: -1056856309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_12
+      rect:
+        serializedVersion: 2
+        x: 1023
+        y: 777
+        width: 114
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a4074c13de2ead46b3de4e1ab29dad0
+      internalID: -245960233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_13
+      rect:
+        serializedVersion: 2
+        x: 1281
+        y: 777
+        width: 78
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98b6d9a415e6c7b41a2fde3cb57c88dc
+      internalID: -106973142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_14
+      rect:
+        serializedVersion: 2
+        x: 1522
+        y: 777
+        width: 76
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34152cf7fedd97945b0b19bffaf6bdf3
+      internalID: -2014581738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_15
+      rect:
+        serializedVersion: 2
+        x: 1763
+        y: 782
+        width: 74
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70e91a7cab5e2e141bd568a4d8bca23d
+      internalID: -2039501663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_16
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 530
+        width: 78
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b31fc0cc50c67f349b1df8b3bf5adc81
+      internalID: 1099768436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_17
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 537
+        width: 75
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bffdd79a67030e4459e3048efafed483
+      internalID: -880886641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_18
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 538
+        width: 76
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1c546d3999c32d45aa085965c3d5c73
+      internalID: -843220540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_19
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 539
+        width: 68
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9103e690f1fad994dbcbeb1ba3abba54
+      internalID: 1938138201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_20
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 537
+        width: 78
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecc5ac42726122c42903722c9136b5d8
+      internalID: 1898423898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_21
+      rect:
+        serializedVersion: 2
+        x: 1281
+        y: 538
+        width: 77
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d1be23ff159aba4c9db8640c7e4841b
+      internalID: 198813109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_22
+      rect:
+        serializedVersion: 2
+        x: 1501
+        y: 539
+        width: 118
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5699cf3d5c6e8184fbbf951b7c18736d
+      internalID: -1107348504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_23
+      rect:
+        serializedVersion: 2
+        x: 1758
+        y: 538
+        width: 84
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1855e1738eda6648b8df1cbab366ba0
+      internalID: -991087329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_24
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 298
+        width: 84
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6817a75461001284995af15d5f26e0bd
+      internalID: -1726841960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_25
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 299
+        width: 66
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e18a50950e0a034ea45ca6196a76473
+      internalID: 802293851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_26
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 297
+        width: 78
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d292e9a0bdac89e43b2886c7a3249bc1
+      internalID: -1506730689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_27
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 302
+        width: 55
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6193785b109abf43a0f08839c858a8c
+      internalID: -1320319759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_28
+      rect:
+        serializedVersion: 2
+        x: 1043
+        y: 299
+        width: 74
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 812567da98ba83243ba69718a1abf011
+      internalID: 1434460524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_29
+      rect:
+        serializedVersion: 2
+        x: 1281
+        y: 297
+        width: 78
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2da16434d5be06b4b9b03cda29f0b2d6
+      internalID: 1340510402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_30
+      rect:
+        serializedVersion: 2
+        x: 1522
+        y: 299
+        width: 76
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c0e2134a04e6e94e99cb6ad4d2eba3e
+      internalID: -422109598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_31
+      rect:
+        serializedVersion: 2
+        x: 1762
+        y: 299
+        width: 77
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e4cff3c8db2b9040961f9871da99b16
+      internalID: 371901453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_32
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 57
+        width: 78
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c59c0fe0241e3af4996c5d4384807112
+      internalID: -818352501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_33
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 58
+        width: 66
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8341d2650e8dd1540a792544b4fd2a67
+      internalID: -1999984045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_34
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 58
+        width: 82
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fb08f1b7a0363c4fa66653c30cac9b9
+      internalID: -1624105183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_35
+      rect:
+        serializedVersion: 2
+        x: 801
+        y: 58
+        width: 78
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d656ee020b971c48be986b1bed0e6da
+      internalID: -605697822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_36
+      rect:
+        serializedVersion: 2
+        x: 1063
+        y: 133
+        width: 36
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7917acc9c9a0c6f4587f16a0a9932521
+      internalID: 1823790700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_37
+      rect:
+        serializedVersion: 2
+        x: 1302
+        y: 123
+        width: 35
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b43c4836799a87a42bea3a12de2a7f4e
+      internalID: 1700925999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_38
+      rect:
+        serializedVersion: 2
+        x: 1522
+        y: 101
+        width: 76
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3117e85282a6e4945acbc45875c2e2e9
+      internalID: 46767145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_39
+      rect:
+        serializedVersion: 2
+        x: 1782
+        y: 102
+        width: 36
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cf564b888d197f44a0e86b63bcdcf47
+      internalID: -1455555195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_40
+      rect:
+        serializedVersion: 2
+        x: 1061
+        y: 70
+        width: 37
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8f71b1551c3c4a42bff73434aef3351
+      internalID: 1270379844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_41
+      rect:
+        serializedVersion: 2
+        x: 1302
+        y: 79
+        width: 36
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9f65d64b6f27dc45be9a2421547db55
+      internalID: -560365556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_42
+      rect:
+        serializedVersion: 2
+        x: 1534
+        y: 58
+        width: 40
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce7a2af6a7ad09f4a81c9552326a0753
+      internalID: -1580464297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortnite-font-7107118_1920_43
+      rect:
+        serializedVersion: 2
+        x: 1779
+        y: 59
+        width: 42
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ae3fe0f9df476c49b712c1c82f808e4
+      internalID: 1674684425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      fortnite-font-7107118_1920_29: 1340510402
+      fortnite-font-7107118_1920_34: -1624105183
+      fortnite-font-7107118_1920_39: -1455555195
+      fortnite-font-7107118_1920_6: 1840214743
+      fortnite-font-7107118_1920_30: -422109598
+      fortnite-font-7107118_1920_15: -2039501663
+      fortnite-font-7107118_1920_27: -1320319759
+      fortnite-font-7107118_1920_14: -2014581738
+      fortnite-font-7107118_1920_32: -818352501
+      fortnite-font-7107118_1920_25: 802293851
+      fortnite-font-7107118_1920_8: -2141663571
+      fortnite-font-7107118_1920_20: 1898423898
+      fortnite-font-7107118_1920_43: 1674684425
+      fortnite-font-7107118_1920_37: 1700925999
+      fortnite-font-7107118_1920_12: -245960233
+      fortnite-font-7107118_1920_2: -1976863931
+      fortnite-font-7107118_1920_21: 198813109
+      fortnite-font-7107118_1920_42: -1580464297
+      fortnite-font-7107118_1920_33: -1999984045
+      fortnite-font-7107118_1920_9: 2065167817
+      fortnite-font-7107118_1920_11: -1056856309
+      fortnite-font-7107118_1920_38: 46767145
+      fortnite-font-7107118_1920_24: -1726841960
+      fortnite-font-7107118_1920_19: 1938138201
+      fortnite-font-7107118_1920_26: -1506730689
+      fortnite-font-7107118_1920_16: 1099768436
+      fortnite-font-7107118_1920_31: 371901453
+      fortnite-font-7107118_1920_4: 82151206
+      fortnite-font-7107118_1920_36: 1823790700
+      fortnite-font-7107118_1920_28: 1434460524
+      fortnite-font-7107118_1920_1: -582370178
+      fortnite-font-7107118_1920_7: -108340843
+      fortnite-font-7107118_1920_13: -106973142
+      fortnite-font-7107118_1920_35: -605697822
+      fortnite-font-7107118_1920_22: -1107348504
+      fortnite-font-7107118_1920_18: -843220540
+      fortnite-font-7107118_1920_5: 63882314
+      fortnite-font-7107118_1920_40: 1270379844
+      fortnite-font-7107118_1920_41: -560365556
+      fortnite-font-7107118_1920_17: -880886641
+      fortnite-font-7107118_1920_0: -380005767
+      fortnite-font-7107118_1920_3: 863748240
+      fortnite-font-7107118_1920_23: -991087329
+      fortnite-font-7107118_1920_10: -27705633
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
