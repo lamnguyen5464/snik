@@ -5,9 +5,15 @@ class ActionType {
   static NEW_COORDINATE = "NEW_COORDINATE";
 }
 class Action {
-  constructor(msg, type) {
+  constructor(data, type) {
     this.type = type;
-    this.msg = msg;
+    this.data = data;
+  }
+  init(type , data) {
+    this.type = type;
+    this.data = data
+    return JSON.stringify(this);
   }
 }
-module.exports = { ActionType, Action };
+const action = new Action();
+module.exports = { ActionType, action };

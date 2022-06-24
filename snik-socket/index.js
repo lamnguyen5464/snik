@@ -1,6 +1,6 @@
 const WebSocket = require("ws");
 const Room = require("./models/room");
-const {Action, ActionType} = require("./models/action");
+const {action, ActionType} = require("./models/action");
 
 const wss = new WebSocket.Server({ port: 8080 }, () => {
   console.log("Server started");
@@ -21,39 +21,38 @@ wss.getUniqueID = function () {
 };
 wss.on("connection", (ws) => {
   ws.id = wss.getUniqueID();
-  // console.log(wss.clients);
   ws.on("message", (payload) => {
-    console.log(payload);
     const { data, type } = JSON.parse(payload);
+    console.log(data, type)
     switch (type) {
-      case CREATE_ROOM: {
+      case ActionType.CREATE_ROOM: {
         const { roomOwnerName } = data;
         const newRoom = new Room(roomOwnerName);
         rooms.push(newRoom);
         newRoom.socketids.push(ws.id);
-        ws.send(new Action(newRoom.id, ActionType.CREATE_ROOM));
+        ws.send(action.init(ActionType.CREATE_ROOM, newRoom.id));
         break;
       }
-      case FIND_ROOM: {
+      case ActionType.FIND_ROOM: {
         const { roomId } = data;
         const foundedRoom = rooms.findOne((room) => room.id === roomId);
-        ws.send(new Action(foundedRoom, ActionType.FIND_ROOM));
+        ws.send(action.init(ActionType.FIND_ROOM, foundedRoom));
         break;
       }
-      case JOIN_ROOM: {
+      case ActionType.JOIN_ROOM: {
 
         const { roomId, userName } = data;
         const foundedRoom = rooms.findOne((room) => room.id === roomId);
         if(founded.ownerName === userName || founded.userName !== null) {
-            ws.send(new Action("Cannot join room", ActionType.FIND_ROOM));
+            ws.send(action.init(ActionType.FIND_ROOM, "Cannot join room"));
         }
         foundedRoom.socketids.push(ws.id)
         foundedRoom.joinRoom(userName);
-        wss.broadcast(new Action(userName+ "has joined!" , ActionType.USER_JOINED), foundedRoom.socketids);
+        wss.broadcast(action.init(ActionType.USER_JOINED,userName+ "has joined!"), foundedRoom.socketids);
         break;
       }
 
-      case ON_MOVE: {
+      case ActionType.ON_MOVE: {
         const { roomId, name, x, y } = data;
         const foundedRoom = rooms.findOne((room) => room.id === roomId);
         if(foundedRoom.ownerName === name) {
@@ -66,17 +65,21 @@ wss.on("connection", (ws) => {
         break;
       }
 
-      case START: {
+      case ActionType.START: {
         const { roomId } = data;
         intervalControl = setInterval(() => {
             const foundedRoom = rooms.findOne((room) => room.id === roomId);
-            wss.broadcast(new Action(foundedRoom, ActionType.NEW_COORDINATE), foundedRoom.socketids);
+            wss.broadcast(action.init(ActionType.NEW_COORDINATE, foundedRoom), foundedRoom.socketids);
         }, 30);
+        break;
       }
 
-      case STOP: {
+      case ActionType.STOP: {
         intervalControl.clearInterval();
+        break;
       }
+      default:
+        return;
     }
   });
 });
