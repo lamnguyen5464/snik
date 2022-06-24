@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MultiModeMenu : MonoBehaviour
 {
+    string a;
+    
     public void FindRoom()
     {
-
+        
     }
 
     public void NavigateBack()
