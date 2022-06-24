@@ -20,6 +20,9 @@ public class Board : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("Here");
+        FindObjectOfType<AudioManager>().Play("background");
+
         tilemap = GetComponentInChildren<Tilemap>();
         activePiece = GetComponentInChildren<Piece>();
 
