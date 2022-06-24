@@ -7,6 +7,7 @@ module.exports = class Room {
         this.ownerName = ownerName;
         this.id = generateID();
         this.userName = null;
+        this.socketids = [];
         this.A = {};
         this.B = {};
     }

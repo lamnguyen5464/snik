@@ -1,19 +1,34 @@
 using WebSocketSharp;
 using UnityEngine;
+using System.Text.Json;
 
+public class Test {
+    public int year;
+    public int month;
+    public Test() {
+        this.year = 1;
+        this.month = 123;
+    }
+}
 public class SocketClient {
     
-    public static void move(string roomId, string user, float x, float y) {
+    static WebSocket ws;
+    public static void connect() {
         
-    }
-    public static void create() {
-        string jsonString = 
-        ws.Send();
-    }
-    public static void join() {
+
+        ws = new WebSocket("ws://localhost:8080");
+        ws.OnMessage += (sender, e) => {
+        };
+        ws.Connect();
         
+
     }
-    public static void findRoom() {
+    public static void send() {
+        Test a = new Test();
+        var json = JsonUtility.ToJson(a);
+       ws.Send(json);
+    }
+    public static void stop() {
         
     }
 }
