@@ -25,13 +25,6 @@ public class PlayGround : MonoBehaviour
 
         snakesManger.Initialize(this);
 
-        PayloadWrapper<TestModel> payload = PayloadWrapper<TestModel>.FromData<TestModel>(new TestModel());
-        Debug.Log(payload.GetPayload());
-
-        PayloadWrapper<TestModel> payload2 = PayloadWrapper<TestModel>.FromString<TestModel>(payload.GetPayload());
-        Debug.Log(payload2.GetData().varA + " " + payload2.GetData().varB);
-
-
    }
 
     private void Start()

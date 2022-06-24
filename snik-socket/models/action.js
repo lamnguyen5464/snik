@@ -1,6 +1,7 @@
 class ActionType {
   static USER_JOINED = "USER_JOINED";
   static FIND_ROOM = "FIND_ROOM";
+  static JOIN_ROOM = "JOIN_ROOM";
   static CREATE_ROOM = "CREATE_ROOM";
   static NEW_COORDINATE = "NEW_COORDINATE";
 }
@@ -9,9 +10,9 @@ class Action {
     this.type = type;
     this.data = data;
   }
-  init(type , data) {
+  init(type, data) {
     this.type = type;
-    this.data = data
+    this.data = data;
     return JSON.stringify(this);
   }
 }

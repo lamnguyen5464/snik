@@ -1,5 +1,5 @@
 
-public interface PayloadModel {
+public interface PayloadData {
 	string ToJsonString();
 	string GetAction();
 }

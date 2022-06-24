@@ -1,10 +1,13 @@
 using UnityEngine;
-public class TestModel: PayloadModel {
+public class TestModel: PayloadData {
 	public string varA;
     public int varB;
-    public TestModel() {
-        this.varA = "AAAA";
-        this.varB = 111;
+    public TestModel(
+		string varA,
+		int varB
+	) {
+        this.varA = varA;
+        this.varB = varB;
     } 
 
 	// override
