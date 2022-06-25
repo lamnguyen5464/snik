@@ -503,7 +503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63cf2c83968284e22a6f47b3a573070a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boardSize: {x: 10, y: 20}
+  boardSize: {x: 12, y: 20}
   colorItems:
   - tile: {fileID: 11400000, guid: f6c4109fd0d185b419e5e665b07c42f0, type: 2}
   - tile: {fileID: 11400000, guid: 89eae29ecf56ea14c8b3927213a00066, type: 2}

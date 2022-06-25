@@ -11,20 +11,20 @@ public class SocketClient
         ws = new WebSocket("ws://localhost:8080");
         ws.Connect();
 
-        ws.OnMessage += (sender, e) =>
-        {
-            string rawData = e.Data;
+        // ws.OnMessage += (sender, e) =>
+        // {
+        //     string rawData = e.Data;
 
-            PayloadWrapper<TestModel> payload = PayloadWrapper<TestModel>.FromString<TestModel>(rawData);
+        //     PayloadWrapper<TestModel> payload = PayloadWrapper<TestModel>.FromString<TestModel>(rawData);
 
-            Debug.Log(e.Data);
-            Debug.Log(payload.GetPayload());
-            Debug.Log(payload.action);
-            TestModel data = payload.GetData();
-            Debug.Log(data.varA);
-            Debug.Log(data.varB);
+        //     Debug.Log(e.Data);
+        //     Debug.Log(payload.GetPayload());
+        //     Debug.Log(payload.action);
+        //     TestModel data = payload.GetData();
+        //     Debug.Log(data.varA);
+        //     Debug.Log(data.varB);
 
-        };
+        // };
     }
 
     public static void addHandler(Action<object, WebSocketSharp.MessageEventArgs> handler) {

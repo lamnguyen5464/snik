@@ -33,6 +33,10 @@ public class PayloadWrapper<T> where T: PayloadData {
 		return this.data;
 	}
 
+	public bool isValid() {
+		return this.action == this.data.GetAction();
+	}
+
 	public string GetPayload() {
 		return JsonUtility.ToJson(this);
 	}

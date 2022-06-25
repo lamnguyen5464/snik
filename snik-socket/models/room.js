@@ -6,7 +6,7 @@ class Room {
     this.ownerName = ownerName;
     this.id = generateID();
     this.userName = null;
-    this.socketids = [];
+    this.clientIds = [];
     this.A = {};
     this.B = {};
   }
@@ -26,13 +26,14 @@ class RoomManager {
 
   rooms = [];
   userIdToRoomId = {};
+  defaultRoom = new Room();
 
   addRoom(room) {
     this.rooms.push(room);
   }
 
   findRoom(roomId) {
-    return this.rooms?.find((room) => room.id === roomId) ?? new Room();
+    return this.rooms?.find((room) => room.id === roomId) ?? this.defaultRoom;
   }
 }
 

@@ -29,6 +29,7 @@ class ClientManager {
   }
 
   sendTo(clientIds = [], data) {
+    console.info("[send] : ", data);
     const message = typeof data === "string" ? data : JSON.stringify(data);
     clientIds.forEach((clientId) => this.connections[clientId].send(message));
   }
@@ -60,7 +61,7 @@ class ClientManager {
       case ActionType.CREATE_ROOM: {
         const { roomOwnerName } = data || {};
         const newRoom = new Room(roomOwnerName);
-        newRoom.socketids.push(client.id);
+        newRoom.clientIds.push(client.id);
         roomManager.addRoom(newRoom);
         client.send(action.init(ActionType.CREATE_ROOM, newRoom.id));
         break;
@@ -77,16 +78,16 @@ class ClientManager {
         if (founded.ownerName === userName || founded.userName !== null) {
           client.send(action.init(ActionType.FIND_ROOM, "Cannot join room"));
         }
-        foundedRoom.socketids.push(client.id);
+        foundedRoom.clientIds.push(client.id);
         foundedRoom.joinRoom(userName);
         this.sendTo(
-          foundedRoom.socketids,
+          foundedRoom.clientIds,
           action.init(ActionType.USER_JOINED, userName + "has joined!")
         );
         break;
       }
 
-      case ActionType.ON_MOVE: {
+      case ActionType.NEW_COORDINATE: {
         const { roomId, name, x, y } = data;
         const foundedRoom = roomManager.findRoom(roomId);
         if (foundedRoom.ownerName === name) {
@@ -96,18 +97,24 @@ class ClientManager {
           foundedRoom.B["x"] = x;
           foundedRoom.B["y"] = y;
         }
+
+        this.sendTo(
+          foundedRoom.clientIds,
+          action.init(ActionType.ON_MOVE, {
+            firstX: foundedRoom?.A?.x ?? 0,
+            firstY: foundedRoom?.A?.y ?? 0,
+            secondX: foundedRoom?.B?.x ?? 0,
+            secondY: foundedRoom?.B?.y ?? 0,
+          })
+        );
+
         break;
       }
 
       case ActionType.START_GAME: {
         const { roomId } = data;
-        setInterval(() => {
-          const foundedRoom = roomManager.findRoom(roomId);
-          this.sendTo(
-            foundedRoom.socketids,
-            action.init(ActionType.NEW_COORDINATE, foundedRoom)
-          );
-        }, 30);
+        const foundedRoom = roomManager.findRoom(roomId);
+        foundedRoom.clientIds.push(client.id);
         break;
       }
 

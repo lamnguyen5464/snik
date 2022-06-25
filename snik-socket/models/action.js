@@ -4,16 +4,17 @@ class ActionType {
   static FIND_ROOM = "FIND_ROOM";
   static CREATE_ROOM = "CREATE_ROOM";
   static NEW_COORDINATE = "NEW_COORDINATE";
+  static ON_MOVE = "ON_MOVE";
   static START_GAME = "START_GAME";
 }
 class Action {
-  constructor(data, type) {
-    this.type = type;
-    this.data = data;
+  constructor(payload, action) {
+    this.action = action;
+    this.payload = payload;
   }
-  init(type, data) {
-    this.type = type;
-    this.data = data;
+  init(action, payload) {
+    this.action = action;
+    this.payload = JSON.stringify(payload);
     return JSON.stringify(this);
   }
 }

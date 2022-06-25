@@ -9,6 +9,8 @@ public class SnakesManger : MonoBehaviour {
     private Snake firstSnake;
     private SecondSnake secondSnake;
 
+    private Vector2Int? newFirstSnakeTranslation = null;
+
     public void Initialize(PlayGround board) {
         this.board = board;
         firstSnake = new Snake(board, this, 2);
@@ -19,7 +21,14 @@ public class SnakesManger : MonoBehaviour {
         this.emitStartSignal();
 
         Action<object, WebSocketSharp.MessageEventArgs> handler = (sender, eventData) => {
-            Debug.Log(eventData.Data);
+            PayloadWrapper<OnMoveData> onMovePayload = PayloadWrapper<OnMoveData>.FromString<OnMoveData>(eventData.Data);
+            if (onMovePayload.isValid()) {
+                OnMoveData data =  onMovePayload.GetData();
+                int deltaX = data.firstX - firstSnake.data.head.x;
+                int deltaY = data.firstY - firstSnake.data.head.y;
+                newFirstSnakeTranslation = new Vector2Int(deltaX, deltaY);
+            }
+
         };
         SocketClient.addHandler(handler);
     }
@@ -33,9 +42,16 @@ public class SnakesManger : MonoBehaviour {
         firstSnake.OnClear(board.tilemap);
         secondSnake.OnClear(board.tilemap);
 
-        if (firstSnake.OnHandleInput()) {
-            emitNewCoordinate();
+        Vector2Int? firstSnakeMove = firstSnake.OnHandleInput();
+        if (firstSnakeMove != null) {
+            emitNewCoordinate(firstSnakeMove ?? new Vector2Int(0, 0));
         }
+
+        if (newFirstSnakeTranslation != null) {
+            firstSnake.Move(newFirstSnakeTranslation ?? new Vector2Int(0, 0));
+            newFirstSnakeTranslation = null;
+        }
+
         secondSnake.OnHandleInput();
 
         firstSnake.OnDraw(board.tilemap);
@@ -43,9 +59,9 @@ public class SnakesManger : MonoBehaviour {
 
     }
 
-    public void emitNewCoordinate() {
+    public void emitNewCoordinate(Vector2Int translation) {
         Vector3Int pos = firstSnake.data.head;
-        NewCoordinateData data = new NewCoordinateData("user_01", pos.x, pos.y);
+        NewCoordinateData data = new NewCoordinateData("user_01", pos.x + translation.x, pos.y + translation.y);
         PayloadWrapper<NewCoordinateData> payloadData = PayloadWrapper<NewCoordinateData>.FromData<NewCoordinateData>(data);
         SocketClient.send(payloadData.GetPayload());
     }
