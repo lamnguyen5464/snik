@@ -93,6 +93,7 @@ class ClientManager {
 
         foundedRoom.userData?.forEach((item, index) => {
           if (item.clientId === client.id) {
+            console.warn(`[modify] of ${client.id}`, { x, y });
             foundedRoom.userData[index].position = { x, y };
           }
         });

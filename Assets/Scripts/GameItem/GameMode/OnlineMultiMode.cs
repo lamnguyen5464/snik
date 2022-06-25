@@ -17,8 +17,8 @@ public class OnlineMultiMode : SnakeGameMode {
     public void Initialize(PlayGround board) {
         this.board = board;
         this.isStarted = false;
-        firstSnake = new Snake(board, this, 2);
-        secondSnake = new Snake(board, this, -2);
+        firstSnake = new Snake(board, this, -2);
+        secondSnake = new Snake(board, this, 2);
 		Profile.getInstance().nickName = "user_01";
     }
 
@@ -45,18 +45,27 @@ public class OnlineMultiMode : SnakeGameMode {
                 OnMoveData data =  onMovePayload.GetData();
 				OnMoveData.UserItem[] items = data.items;
 
-                foreach (var item in items){
+            Debug.Log("First snake: " +firstSnake.data.head.x + " " +firstSnake.data.head.y);
+            Debug.Log("Second snake: " +secondSnake.data.head.x + " " +secondSnake.data.head.y);
+
+                foreach (var item in items) {
+                    Debug.Log(" >>>>>>> " + item.position.x + " - " + item.position.y + " " + items.Length);
 				    Coordinate2D newPos = item.position;
-                    Vector3Int oldPos = mySnake == 0 ? firstSnake.data.head : secondSnake.data.head;
+                    Vector3Int oldPos = item.id == 0 ? firstSnake.data.head : secondSnake.data.head;
+                    if (newPos == null || oldPos == null) {
+                        Debug.Log(" nulll ");
+                    }
+                        Debug.Log(oldPos.x + "-" + oldPos.y + " old " + mySnake);
+                        Debug.Log(newPos.x + "-" + newPos.y +  " new " + mySnake);
                     int deltaX = newPos.x - oldPos.x;
                     int deltaY = newPos.y - oldPos.y;
 
                     if (item.id == 0) {
                         newFirstSnakeTranslation = new Vector2Int(deltaX, deltaY);
                     } else if (item.id == 1) {
-                        Debug.Log(deltaX + "-" + deltaY + " " + mySnake);
                         newSecondSnakeTranslation = new Vector2Int(deltaX, deltaY);
                     }
+                    Debug.Log("delta: " + deltaX + "-" + deltaY + " " + mySnake);
 
                 }
                 return;
@@ -72,27 +81,24 @@ public class OnlineMultiMode : SnakeGameMode {
             return;
         }
 
-        firstSnake.OnClear(board.tilemap);
-        secondSnake.OnClear(board.tilemap);
-
         Vector2Int? move = KeyUtils.GetBasicDirectionOnKey();
         if (move != null) {
             emitNewCoordinate(move ?? new Vector2Int(0, 0));
         }
 
         if (newFirstSnakeTranslation != null) {
+            firstSnake.OnClear(board.tilemap);
             firstSnake.Move(newFirstSnakeTranslation ?? new Vector2Int(0, 0));
             newFirstSnakeTranslation = null;
+            firstSnake.OnDraw(board.tilemap);
         }
         
         if (newSecondSnakeTranslation != null) {
+            secondSnake.OnClear(board.tilemap);
             secondSnake.Move(newSecondSnakeTranslation ?? new Vector2Int(0, 0));
-            Debug.Log("Second snake: " +secondSnake.data.head.x + " " +secondSnake.data.head.y);
             newSecondSnakeTranslation = null;
+            secondSnake.OnDraw(board.tilemap);
         }
-
-        firstSnake.OnDraw(board.tilemap);
-        secondSnake.OnDraw(board.tilemap);
 
     }
 
@@ -100,8 +106,8 @@ public class OnlineMultiMode : SnakeGameMode {
         Vector3Int pos = mySnake == 0 ? firstSnake.data.head : secondSnake.data.head;
         int newX = pos.x + translation.x;
         int newY = pos.y + translation.y;
-            Debug.Log("Second : " +secondSnake.data.head.x + " " +secondSnake.data.head.y);
-        Debug.Log("new: " + newX + " " + newY);
+        //     Debug.Log("Second : " +secondSnake.data.head.x + " " +secondSnake.data.head.y);
+        // Debug.Log("new: " + newX + " " + newY);
         NewCoordinateData data = new NewCoordinateData(Profile.getInstance().nickName, newX, newY);
         PayloadWrapper<NewCoordinateData> payloadData = PayloadWrapper<NewCoordinateData>.FromData<NewCoordinateData>(data);
         SocketClient.send(payloadData.GetPayload());
