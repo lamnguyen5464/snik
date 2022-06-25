@@ -15,10 +15,18 @@ public class SnakesManger : MonoBehaviour {
     }
 
     void Start() {
+    //     var handler = (sender, eventData) => {
+    //         Debug.Log(eventData.Data);
+    //     };
+    //     SocketClient.addHandler(handler);
     }
 
     // Update is called once per frame
     void Update() {
+        if (firstSnake == null || secondSnake == null) {
+            return;
+        }
+
         firstSnake.OnClear(board.tilemap);
         secondSnake.OnClear(board.tilemap);
 

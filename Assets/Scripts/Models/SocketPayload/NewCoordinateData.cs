@@ -6,7 +6,6 @@ public class NewCoordinateData: PayloadData {
 	public int x;
 	public int y;
 
-	public string action;
 
 	public NewCoordinateData(string userName, int x, int y) {
 		this.userName = userName;

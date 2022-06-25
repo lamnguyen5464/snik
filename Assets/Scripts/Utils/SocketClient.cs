@@ -1,30 +1,16 @@
 using UnityEngine;
 using WebSocketSharp;
-public class Test
-{
-    public string data;
-
-    public string type;
-
-    public Test()
-    {
-        this.data = "Dat";
-        this.type = "CREATE_ROOM";
-    }
-    public Test(string data, string type)
-    {
-        this.data = data;
-        this.type = type;
-    }
-}
+using System;
 
 public class SocketClient
 {
-    static WebSocket ws;
+    private static WebSocket ws;
 
     public static void connect()
     {
         ws = new WebSocket("ws://localhost:8080");
+        ws.Connect();
+
         ws.OnMessage += (sender, e) =>
         {
             string rawData = e.Data;
@@ -39,15 +25,28 @@ public class SocketClient
             Debug.Log(data.varB);
 
         };
-        ws.Connect();
+    }
+
+    public static void addHandler(Action<object, WebSocketSharp.MessageEventArgs> handler) {
+        if (ws == null) {
+            SocketClient.connect();
+        }
+
+        ws.OnMessage += (sender, eventData) => {
+            handler(sender, eventData);
+        };
     }
 
     public static void send()
     {
+        if (ws == null) {
+            SocketClient.connect();
+        }
         if (ws == null) return;
 
+        var model = new TestModel("aaaa",222);
 
-        PayloadWrapper<TestModel> payload = PayloadWrapper<TestModel>.FromData<TestModel>(new TestModel("aaaa",222));
+        PayloadWrapper<TestModel> payload = PayloadWrapper<TestModel>.FromData<TestModel>(model);
         ws.Send(payload.GetPayload());
 
         // PayloadWrapper<TestModel> payload2 = PayloadWrapper<TestModel>.FromString<TestModel>(payload.GetPayload());
