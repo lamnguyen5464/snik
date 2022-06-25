@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu/MultiModeMenu.unity
     guid: 1f687cdf772fd914aa15d40705e8beb6
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Menu/FindRoom.unity
     guid: 0417fc565d8f4d14c8c5ac4a7fb7ab85
   m_configObjects: {}
