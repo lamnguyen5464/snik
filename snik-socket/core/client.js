@@ -91,6 +91,10 @@ class ClientManager {
         const { roomId, nickName = "", x, y } = data || {};
         const foundedRoom = roomManager.findRoom(roomId);
 
+        if (!foundedRoom.containClient(client.id)) {
+          roomManager.addClientToRoom(client.id, nickName, foundedRoom.id);
+        }
+
         foundedRoom.userData?.forEach((item, index) => {
           if (item.clientId === client.id) {
             console.warn(`[modify] of ${client.id}`, { x, y });
@@ -112,6 +116,9 @@ class ClientManager {
 
         if (!foundedRoom.containClient(client.id)) {
           roomManager.addClientToRoom(client.id, nickName, foundedRoom.id);
+          // } else if (foundedRoom.userData.length >= 2) {
+          //   foundedRoom.userData = [];
+          //   roomManager.addClientToRoom(client.id, nickName, foundedRoom.id);
         }
 
         client.send(

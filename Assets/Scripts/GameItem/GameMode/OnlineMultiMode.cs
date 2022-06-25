@@ -50,11 +50,6 @@ public class OnlineMultiMode : SnakeGameMode {
                 foreach (var item in items){
 				    Coordinate2D newPos = item.position;
                     Vector3Int oldPos = item.id == 0 ? firstSnake.data.head : secondSnake.data.head;
-                    if (newPos == null || oldPos == null) {
-                        Debug.Log(" nulll ");
-                    }
-                        Debug.Log(oldPos.x + "-" + oldPos.y + " old " + mySnake);
-                        Debug.Log(newPos.x + "-" + newPos.y +  " new " + mySnake);
                     int deltaX = newPos.x - oldPos.x;
                     int deltaY = newPos.y - oldPos.y;
 
@@ -63,8 +58,6 @@ public class OnlineMultiMode : SnakeGameMode {
                     } else if (item.id == 1) {
                         newSecondSnakeTranslation = new Vector2Int(deltaX, deltaY);
                     }
-                    Debug.Log("delta: " + deltaX + "-" + deltaY + " " + mySnake);
-
                 }
                 return;
            }
@@ -79,24 +72,26 @@ public class OnlineMultiMode : SnakeGameMode {
             return;
         }
 
+        firstSnake.OnClear(board.tilemap);
+        secondSnake.OnClear(board.tilemap);
+
         Vector2Int? move = KeyUtils.GetBasicDirectionOnKey();
         if (move != null) {
             emitNewCoordinate(move ?? new Vector2Int(0, 0));
         }
 
         if (newFirstSnakeTranslation != null) {
-            firstSnake.OnClear(board.tilemap);
             firstSnake.Move(newFirstSnakeTranslation ?? new Vector2Int(0, 0));
             newFirstSnakeTranslation = null;
-            firstSnake.OnDraw(board.tilemap);
         }
         
         if (newSecondSnakeTranslation != null) {
-            secondSnake.OnClear(board.tilemap);
             secondSnake.Move(newSecondSnakeTranslation ?? new Vector2Int(0, 0));
             newSecondSnakeTranslation = null;
-            secondSnake.OnDraw(board.tilemap);
         }
+
+        firstSnake.OnDraw(board.tilemap);
+        secondSnake.OnDraw(board.tilemap);
 
     }
 
