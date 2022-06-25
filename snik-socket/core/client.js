@@ -60,9 +60,8 @@ class ClientManager {
     switch (_action) {
       case ActionType.CREATE_ROOM: {
         const { roomOwnerName } = data || {};
-        const newRoom = new Room(roomOwnerName);
-        newRoom.clientIds.push(client.id);
-        roomManager.addRoom(newRoom);
+        const newRoom = roomManager.createRoom(roomOwnerName);
+        roomManager.addClientToRoom(client.id, roomOwnerName, {}, newRoom.id);
         client.send(action.init(ActionType.CREATE_ROOM, newRoom.id));
         break;
       }
@@ -75,11 +74,12 @@ class ClientManager {
       case ActionType.JOIN_ROOM: {
         const { roomId, userName } = data || {};
         const foundedRoom = roomManager.findRoom(roomId);
-        if (founded.ownerName === userName || founded.userName !== null) {
-          client.send(action.init(ActionType.FIND_ROOM, "Cannot join room"));
-        }
-        foundedRoom.clientIds.push(client.id);
-        foundedRoom.joinRoom(userName);
+        // if (founded.ownerName === userName || founded.userName !== null) {
+        //   client.send(action.init(ActionType.FIND_ROOM, "Cannot join room"));
+        // }
+        // foundedRoom.clientIds.push(client.id);
+        // foundedRoom.joinRoom(userName);
+        roomManager.addClientToRoom(client.id, userName, {}, newRoom.id);
         this.sendTo(
           foundedRoom.clientIds,
           action.init(ActionType.USER_JOINED, userName + "has joined!")
@@ -88,33 +88,41 @@ class ClientManager {
       }
 
       case ActionType.NEW_COORDINATE: {
-        const { roomId, name, x, y } = data;
+        const { roomId, nickName = "", x, y } = data || {};
         const foundedRoom = roomManager.findRoom(roomId);
-        if (foundedRoom.ownerName === name) {
-          foundedRoom.A["x"] = x;
-          foundedRoom.A["y"] = y;
-        } else {
-          foundedRoom.B["x"] = x;
-          foundedRoom.B["y"] = y;
-        }
+
+        foundedRoom.userData?.forEach((item, index) => {
+          if (item.clientId === client.id) {
+            foundedRoom.userData[index].position = { x, y };
+          }
+        });
 
         this.sendTo(
-          foundedRoom.clientIds,
-          action.init(ActionType.ON_MOVE, {
-            firstX: foundedRoom?.A?.x ?? 0,
-            firstY: foundedRoom?.A?.y ?? 0,
-            secondX: foundedRoom?.B?.x ?? 0,
-            secondY: foundedRoom?.B?.y ?? 0,
-          })
+          foundedRoom.getClientIds(),
+          action.init(ActionType.ON_MOVE, { items: foundedRoom.userData })
         );
 
         break;
       }
 
       case ActionType.START_GAME: {
-        const { roomId } = data;
+        const { roomId, nickName = "" } = data;
         const foundedRoom = roomManager.findRoom(roomId);
-        foundedRoom.clientIds.push(client.id);
+
+        if (!foundedRoom.containClient(client.id)) {
+          roomManager.addClientToRoom(client.id, nickName, foundedRoom.id);
+        }
+
+        client.send(
+          JSON.stringify({
+            action: ActionType.START_GAME,
+            payload: JSON.stringify({
+              clientId: client.id,
+              clientIds: foundedRoom.userData?.map((item) => item.clientId),
+            }),
+          })
+        );
+
         break;
       }
 

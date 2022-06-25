@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class NewCoordinateData: PayloadData {
 
-	public string userName;
+	public string nickName;
 	public int x;
 	public int y;
 
 
-	public NewCoordinateData(string userName, int x, int y) {
-		this.userName = userName;
+	public NewCoordinateData(string nickName, int x, int y) {
+		this.nickName = nickName;
 		this.x = x;
 		this.y = y;
 	}

@@ -1,21 +1,22 @@
 using UnityEngine;
+using System.Collections.Generic;
+using System;
 
 public class OnMoveData: PayloadData {
 
-	public int firstX;
-	public int firstY;
+	[System.Serializable]	
+	public class UserItem {
+		public int id;
+		public string clientId;
+		public string nickName;
+		public Coordinate2D position;
+	}
 
-	public int secondX;
-	public int secondY;
+	public UserItem[] items;
+	public string clientId;
 
-	public OnMoveData(
-		int firstX,
-		int firstY,
-		int secondX,
-		int secondY
-	){
-		this.firstX = firstX;
-		this.firstY = firstY;
+	public OnMoveData(UserItem[] items){
+		this.items = items;
 	}
 
 	public  string GetAction() {

@@ -1,5 +1,13 @@
 using UnityEngine;
 public class StartSignalData: PayloadData {
+
+	public string roomId;
+	public string nickName;
+	public string clientId;
+	public string id;
+
+	public string[] clientIds;
+
     public StartSignalData() {
     } 
 

@@ -5,13 +5,24 @@ class Room {
   constructor(ownerName) {
     this.ownerName = ownerName;
     this.id = generateID();
-    this.userName = null;
-    this.clientIds = [];
-    this.A = {};
-    this.B = {};
+    this.userData = []; // { id, clientId, nickName, position: {x, y} }
   }
-  joinRoom(userName) {
-    this.userName = userName;
+
+  addClient(clientId, nickName, position = {}) {
+    this.userData.push({
+      clientId,
+      nickName,
+      position,
+      id: this.userData.length,
+    });
+  }
+
+  getClientIds() {
+    return this.userData?.map((item) => item.clientId);
+  }
+
+  containClient(clientId) {
+    return this.getClientIds().includes(clientId);
   }
 }
 
@@ -26,10 +37,22 @@ class RoomManager {
 
   rooms = [];
   userIdToRoomId = {};
-  defaultRoom = new Room();
+  defaultRoom = new Room("user_01");
 
   addRoom(room) {
     this.rooms.push(room);
+  }
+
+  createRoom(ownerName) {
+    const room = new Room(ownerName);
+    this.rooms.push(room);
+    return room;
+  }
+
+  addClientToRoom(clientId, nickName, roomId) {
+    this.userIdToRoomId[clientId] = roomId;
+    const room = this.findRoom(roomId);
+    room.addClient(clientId, nickName);
   }
 
   findRoom(roomId) {

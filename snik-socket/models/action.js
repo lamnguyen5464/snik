@@ -6,6 +6,7 @@ class ActionType {
   static NEW_COORDINATE = "NEW_COORDINATE";
   static ON_MOVE = "ON_MOVE";
   static START_GAME = "START_GAME";
+  static READY = "READY";
 }
 class Action {
   constructor(payload, action) {

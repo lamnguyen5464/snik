@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class PlayGround : MonoBehaviour
 {
     public Tilemap tilemap { get; private set; }
-    public SnakesManger snakesManger { get; private set; }
+    public PlayGroundManger snakesManger { get; private set; }
     public Vector2Int boardSize;
     public TileColorItem[] colorItems;
 
@@ -21,7 +21,7 @@ public class PlayGround : MonoBehaviour
     private void Awake()
     {
         tilemap = GetComponentInChildren<Tilemap>();
-        snakesManger = GetComponentInChildren<SnakesManger>();
+        snakesManger = GetComponentInChildren<PlayGroundManger>();
 
         snakesManger.Initialize(this);
 

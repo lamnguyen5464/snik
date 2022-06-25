@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 public class Snake: GameItem{
 	public PlayGround board { get; private set;}
-	private SnakesManger manager;
+	private SnakeGameMode manager;
 	public int atColumn { get; private set;}
 	public SnakeData data {get; private set;}
 	private Vector2Int latestDirection;
 	private SwipeManager swipeManager;
-	public Snake(PlayGround board, SnakesManger manager, int atColumn) {
+	public Snake(PlayGround board, SnakeGameMode manager, int atColumn) {
 		this.board = board;
 		this.atColumn = atColumn;
 		this.manager = manager;
@@ -43,6 +43,7 @@ public class Snake: GameItem{
         newPosition.y += dir.y;
 		this.data.nextHead = newPosition;
 		OccupiedType occupiedType = this.checkOccupation(board.tilemap, board.Bounds);
+		Debug.Log("occupiedType: " + occupiedType + " " +dir.x + " " + dir.y);
 		switch (occupiedType) {
 			case OccupiedType.None:
 				this.data.MoveTo(newPosition);
@@ -99,9 +100,6 @@ public class Snake: GameItem{
 	public Vector2Int? OnHandleInput() {
 		this.swipeManager.Update();
 		Vector2Int? translation = KeyUtils.GetBasicDirectionOnArrow();
-        // if (translation != null) {
-            // this.Move(translation ?? new Vector2Int(0, 0));
-        // }
 		return translation;
 	}
 
