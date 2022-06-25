@@ -43,4 +43,39 @@ public class AudioManager : MonoBehaviour
         s.source.Play();
     }
 
+    public void PlayRandomNotes() {
+        // Random r = new Random();
+        int rInt = UnityEngine.Random.Range(1,7);
+        switch (rInt) {
+            case 1: {
+                Play("Do");
+                break;
+            }
+            case 2: {
+                Play("Re");
+                break;
+            }
+            case 3: {
+                Play("Mi");
+                break;
+            }
+            case 4: {
+                Play("Fa");
+                break;
+            }
+            case 5: {
+                Play("Sol");
+                break;
+            }
+            case 6: {
+                Play("La");
+                break;
+            }
+            case 7: {
+                Play("Si");
+                break;
+            }
+        }
+    }
+
 }
