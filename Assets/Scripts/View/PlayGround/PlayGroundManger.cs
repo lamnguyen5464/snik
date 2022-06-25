@@ -14,6 +14,8 @@ public class PlayGroundManger : MonoBehaviour {
         // gameMode = new OnlineMultiMode();
         gameMode = new OfflineMultiMode();
         gameMode.Initialize(board);
+
+        FindObjectOfType<AudioManager>().Play("background");
     }
 
     void Start() {
