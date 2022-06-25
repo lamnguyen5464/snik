@@ -37,25 +37,23 @@ public class SocketClient
         };
     }
 
-    public static void send()
+    public static void send(string data)
     {
         if (ws == null) {
             SocketClient.connect();
         }
         if (ws == null) return;
 
-        var model = new TestModel("aaaa",222);
+        ws.Send(data);
 
-        PayloadWrapper<TestModel> payload = PayloadWrapper<TestModel>.FromData<TestModel>(model);
-        ws.Send(payload.GetPayload());
+        // var model = new TestModel("aaaa",222);
+
+        // PayloadWrapper<TestModel> payload = PayloadWrapper<TestModel>.FromData<TestModel>(model);
+        // ws.Send(payload.GetPayload());
 
         // PayloadWrapper<TestModel> payload2 = PayloadWrapper<TestModel>.FromString<TestModel>(payload.GetPayload());
         // Debug.Log(payload2.GetData().varA + " " + payload2.GetData().varB);
 
-
-        // Test a = new Test();
-        // var json = JsonUtility.ToJson(a, true);
-        // ws.Send (json);
     }
 
     public static void stop()

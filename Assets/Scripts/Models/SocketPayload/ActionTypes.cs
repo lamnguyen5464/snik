@@ -8,4 +8,5 @@ public class ActionTypes {
 
 	public static string ON_MOVE = "ON_MOVE"; //  Ax, Ay, Bx, By
 	public static string NEW_COORDINATE = "NEW_COORDINATE"; // userName x, y,
+	public static string START_GAME = "START_GAME"; // userName x, y,
 }

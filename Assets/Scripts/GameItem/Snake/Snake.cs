@@ -96,12 +96,13 @@ public class Snake: GameItem{
 		return positions;
 	}
 
-	public void OnHandleInput() {
+	public bool OnHandleInput() {
 		this.swipeManager.Update();
 		Vector2Int? translation = KeyUtils.GetBasicDirectionOnArrow();
         if (translation != null) {
             this.Move(translation ?? new Vector2Int(0, 0));
         }
+		return translation != null;
 	}
 
 	public bool IsOccupied(Vector3Int cell) {

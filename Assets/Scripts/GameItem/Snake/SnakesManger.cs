@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,10 +16,12 @@ public class SnakesManger : MonoBehaviour {
     }
 
     void Start() {
-    //     var handler = (sender, eventData) => {
-    //         Debug.Log(eventData.Data);
-    //     };
-    //     SocketClient.addHandler(handler);
+        this.emitStartSignal();
+
+        Action<object, WebSocketSharp.MessageEventArgs> handler = (sender, eventData) => {
+            Debug.Log(eventData.Data);
+        };
+        SocketClient.addHandler(handler);
     }
 
     // Update is called once per frame
@@ -30,11 +33,26 @@ public class SnakesManger : MonoBehaviour {
         firstSnake.OnClear(board.tilemap);
         secondSnake.OnClear(board.tilemap);
 
-        firstSnake.OnHandleInput();
+        if (firstSnake.OnHandleInput()) {
+            emitNewCoordinate();
+        }
         secondSnake.OnHandleInput();
 
         firstSnake.OnDraw(board.tilemap);
         secondSnake.OnDraw(board.tilemap);
+
+    }
+
+    public void emitNewCoordinate() {
+        Vector3Int pos = firstSnake.data.head;
+        NewCoordinateData data = new NewCoordinateData("user_01", pos.x, pos.y);
+        PayloadWrapper<NewCoordinateData> payloadData = PayloadWrapper<NewCoordinateData>.FromData<NewCoordinateData>(data);
+        SocketClient.send(payloadData.GetPayload());
+    }
+
+    public void emitStartSignal() {
+        PayloadWrapper<StartSignalData> payloadData = PayloadWrapper<StartSignalData>.FromData<StartSignalData>(new StartSignalData());
+        SocketClient.send(payloadData.GetPayload());
     }
 
     public bool IsOccupiedByAllSnakes(Vector3Int cell) {

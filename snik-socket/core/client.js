@@ -1,4 +1,4 @@
-const Room = require("../models/room");
+const { roomManager, Room } = require("../models/room");
 const { action, ActionType } = require("../models/action");
 
 class ClientManager {
@@ -43,37 +43,37 @@ class ClientManager {
     const data = JSON.parse(rawData);
     console.log(`[receive] data from ${client.id}: ${payload}`);
 
-    setInterval(() => {
-      const _payload = JSON.stringify({
-        varA: "varAAA",
-        varB: 111,
-      });
-      const dataToSend = JSON.stringify({
-        action: "TestModel",
-        payload: _payload,
-      });
-      console.info("start send", dataToSend);
-      client.send(dataToSend);
-    }, 1000);
+    // setInterval(() => {
+    //   const _payload = JSON.stringify({
+    //     varA: "varAAA",
+    //     varB: 111,
+    //   });
+    //   const dataToSend = JSON.stringify({
+    //     action: "TestModel",
+    //     payload: _payload,
+    //   });
+    //   console.info("start send", dataToSend);
+    //   client.send(dataToSend);
+    // }, 1000);
 
     switch (_action) {
       case ActionType.CREATE_ROOM: {
-        const { roomOwnerName } = data;
+        const { roomOwnerName } = data || {};
         const newRoom = new Room(roomOwnerName);
-        rooms.push(newRoom);
         newRoom.socketids.push(client.id);
+        roomManager.addRoom(newRoom);
         client.send(action.init(ActionType.CREATE_ROOM, newRoom.id));
         break;
       }
       case ActionType.FIND_ROOM: {
-        const { roomId } = data;
-        const foundedRoom = rooms.findOne((room) => room.id === roomId);
+        const { roomId } = data || {};
+        const foundedRoom = roomManager.findRoom(roomId);
         client.send(action.init(ActionType.FIND_ROOM, foundedRoom));
         break;
       }
       case ActionType.JOIN_ROOM: {
         const { roomId, userName } = data || {};
-        const foundedRoom = rooms.findOne((room) => room.id === roomId);
+        const foundedRoom = roomManager.findRoom(roomId);
         if (founded.ownerName === userName || founded.userName !== null) {
           client.send(action.init(ActionType.FIND_ROOM, "Cannot join room"));
         }
@@ -88,7 +88,7 @@ class ClientManager {
 
       case ActionType.ON_MOVE: {
         const { roomId, name, x, y } = data;
-        const foundedRoom = rooms.findOne((room) => room.id === roomId);
+        const foundedRoom = roomManager.findRoom(roomId);
         if (foundedRoom.ownerName === name) {
           foundedRoom.A["x"] = x;
           foundedRoom.A["y"] = y;
@@ -99,10 +99,10 @@ class ClientManager {
         break;
       }
 
-      case ActionType.START: {
+      case ActionType.START_GAME: {
         const { roomId } = data;
-        intervalControl = setInterval(() => {
-          const foundedRoom = rooms.findOne((room) => room.id === roomId);
+        setInterval(() => {
+          const foundedRoom = roomManager.findRoom(roomId);
           this.sendTo(
             foundedRoom.socketids,
             action.init(ActionType.NEW_COORDINATE, foundedRoom)
