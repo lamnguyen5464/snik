@@ -16,6 +16,7 @@ public class GetInputTextBtnClick : MonoBehaviour
 
     public void GetInputText()
     {
+        AudioManager.instance.Play("ButtonClick");
         Debug.Log("input " + inputUser.text);
         Profile.getInstance().nickName = inputUser.text;
     }
