@@ -19,5 +19,6 @@ public class GetInputTextBtnClick : MonoBehaviour
     public void GetInputText()
     {
         Debug.Log("input" + inputUser.text);
+        UserName.setName(inputUser.text);
     }
 }

@@ -6,7 +6,11 @@ using UnityEngine.SceneManagement;
 public class MultiModeMenu : MonoBehaviour
 {
     string a;
-    
+    public void Start()
+    {
+        SocketClient.connect();
+    }
+
     public void FindRoom()
     {
         
@@ -15,6 +19,13 @@ public class MultiModeMenu : MonoBehaviour
     public void NavigateBack()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
+    }
+
+    public void CreateRoom()
+    {
+        Debug.Log(UserName.getName());
+        CreateRoomRequest req = new CreateRoomRequest(new CreateRoomData("Qhuy"), "CREATE_ROOM");
+        SocketClient.send(req);
     }
 
 
