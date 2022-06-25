@@ -44,7 +44,10 @@ public class OnlineMultiMode : SnakeGameMode {
             if (onMovePayload.isValid()) {
                 OnMoveData data =  onMovePayload.GetData();
 				OnMoveData.UserItem[] items = data.items;
-
+                firstSnake.data.score = 13;
+                firstSnake.data.nickname = "Dat";
+                secondSnake.data.score = 99;
+                secondSnake.data.nickname = "Lam";
                 foreach (var item in items){
 				    Coordinate2D newPos = item.position;
                     Vector3Int oldPos = mySnake == 0 ? firstSnake.data.head : secondSnake.data.head;
