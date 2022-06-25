@@ -44,12 +44,10 @@ public class OnlineMultiMode : SnakeGameMode {
             if (onMovePayload.isValid()) {
                 OnMoveData data =  onMovePayload.GetData();
 				OnMoveData.UserItem[] items = data.items;
+                
+                // ScoringText.name_1.text = "Datttt";
 
-            Debug.Log("First snake: " +firstSnake.data.head.x + " " +firstSnake.data.head.y);
-            Debug.Log("Second snake: " +secondSnake.data.head.x + " " +secondSnake.data.head.y);
-
-                foreach (var item in items) {
-                    Debug.Log(" >>>>>>> " + item.position.x + " - " + item.position.y + " " + items.Length);
+                foreach (var item in items){
 				    Coordinate2D newPos = item.position;
                     Vector3Int oldPos = item.id == 0 ? firstSnake.data.head : secondSnake.data.head;
                     if (newPos == null || oldPos == null) {

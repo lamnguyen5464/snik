@@ -8,6 +8,8 @@ public class SnakeData {
 	public Queue<Vector3Int> position {get; private set;}
 	public Vector3Int head {get; private set;}
 	public Vector3Int nextHead;
+	public string nickname="EEEE";
+	public int score=23;
 
 	public SnakeData(Tile tile, int length, int atColumn) {
 		this.tile = tile;
