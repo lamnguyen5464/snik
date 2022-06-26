@@ -11,7 +11,8 @@ public class PlayGroundManger : MonoBehaviour {
     public void Initialize(PlayGround board) {
         // switch gameMode here
 
-        gameMode = new OnlineMultiMode();
+        gameMode = new OfflineSingleMode();
+        // gameMode = new OnlineMultiMode();
         // gameMode = new OfflineMultiMode();
         gameMode.Initialize(board);
 
