@@ -110,6 +110,18 @@ class ClientManager {
         break;
       }
 
+      case ActionType.RESET_GAME_ROUND: {
+        const { roomId } = data || {};
+        const foundedRoom = roomManager.findRoom(roomId);
+
+        this.sendTo(
+          foundedRoom.getClientIds(),
+          action.init(ActionType.RESET_GAME_ROUND, {})
+        );
+
+        break;
+      }
+
       case ActionType.START_GAME: {
         const { roomId, nickName = "" } = data;
         const foundedRoom = roomManager.findRoom(roomId);
@@ -120,6 +132,13 @@ class ClientManager {
           //   foundedRoom.userData = [];
           //   roomManager.addClientToRoom(client.id, nickName, foundedRoom.id);
         }
+
+        setInterval(() => {
+          this.sendTo(
+            foundedRoom.getClientIds(),
+            action.init(ActionType.ON_MOVE, { items: foundedRoom.userData })
+          );
+        }, 200);
 
         client.send(
           JSON.stringify({

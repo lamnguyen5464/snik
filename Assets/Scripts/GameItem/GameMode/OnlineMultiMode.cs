@@ -40,6 +40,14 @@ public class OnlineMultiMode : SnakeGameMode {
                 return;
             }
 
+             PayloadWrapper<ResetRoudnSignal> resetSignalData= PayloadWrapper<ResetRoudnSignal>.FromString<ResetRoudnSignal>(eventData.Data);
+            if (resetSignalData.isValid()) {
+                // this.firstSnake.Reset();
+                // this.secondSnake.Reset();
+		        this.emitNewCoordinate(new Vector2Int(0, 0));
+                return;
+            }
+
             PayloadWrapper<OnMoveData> onMovePayload = PayloadWrapper<OnMoveData>.FromString<OnMoveData>(eventData.Data);
             if (onMovePayload.isValid()) {
                 OnMoveData data =  onMovePayload.GetData();
@@ -118,6 +126,10 @@ public class OnlineMultiMode : SnakeGameMode {
     }
 
     public void Reset() {
+        ResetRoudnSignal signal = new ResetRoudnSignal();
+        PayloadWrapper<ResetRoudnSignal> payloadData = PayloadWrapper<ResetRoudnSignal>.FromData<ResetRoudnSignal>(signal);
+        SocketClient.send(payloadData.GetPayload());
+
         this.firstSnake.Reset();
         this.secondSnake.Reset();
     }
