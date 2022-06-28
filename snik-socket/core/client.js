@@ -133,6 +133,10 @@ class ClientManager {
           //   roomManager.addClientToRoom(client.id, nickName, foundedRoom.id);
         }
 
+        if (foundedRoom.userData?.length < 2) {
+          break;
+        }
+
         setInterval(() => {
           this.sendTo(
             foundedRoom.getClientIds(),
