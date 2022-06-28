@@ -9,7 +9,7 @@ public class OfflineSingleMode : SnakeGameMode {
     private Snake firstSnake;
     private SecondSnake secondSnake;
     Vector2Int firstSnakeInput;
-    int countDelay = 0;
+    float countDelay = 0;
     bool isLose;
 
     public void Initialize(PlayGround board) {
@@ -33,13 +33,15 @@ public class OfflineSingleMode : SnakeGameMode {
             return;
         }
 
-        countDelay++;
+        countDelay += Time.deltaTime;
+
+        Debug.Log(countDelay);
 
         firstSnake.OnClear(board.tilemap);
 
         firstSnakeInput = firstSnake.OnHandleInput() ?? firstSnakeInput;
 
-        if (countDelay > 8) {
+        if (countDelay > 0.3) {
             countDelay = 0;
             firstSnake.Move(firstSnakeInput);
             AudioManager.instance.PlayRandomNotes();
