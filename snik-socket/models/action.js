@@ -6,6 +6,7 @@ class ActionType {
   static ON_MOVE = "ON_MOVE";
   static START_GAME = "START_GAME";
   static READY = "READY";
+  static RESET_GAME_ROUND = "RESET_GAME_ROUND";
 }
 class Action {
   constructor(payload, action) {

@@ -17,8 +17,8 @@ public class OnlineMultiMode : SnakeGameMode {
     public void Initialize(PlayGround board) {
         this.board = board;
         this.isStarted = false;
-        firstSnake = new Snake(board, this, 2);
-        secondSnake = new Snake(board, this, -2);
+        firstSnake = new Snake(board, this, -2);
+        secondSnake = new Snake(board, this, 2);
 		Profile.getInstance().nickName = "user_01";
     }
 
@@ -40,24 +40,32 @@ public class OnlineMultiMode : SnakeGameMode {
                 return;
             }
 
+             PayloadWrapper<ResetRoudnSignal> resetSignalData= PayloadWrapper<ResetRoudnSignal>.FromString<ResetRoudnSignal>(eventData.Data);
+            if (resetSignalData.isValid()) {
+                // this.firstSnake.Reset();
+                // this.secondSnake.Reset();
+		        this.emitNewCoordinate(new Vector2Int(0, 0));
+                return;
+            }
+
             PayloadWrapper<OnMoveData> onMovePayload = PayloadWrapper<OnMoveData>.FromString<OnMoveData>(eventData.Data);
             if (onMovePayload.isValid()) {
                 OnMoveData data =  onMovePayload.GetData();
 				OnMoveData.UserItem[] items = data.items;
+                
+                // ScoringText.name_1.text = "Datttt";
 
                 foreach (var item in items){
 				    Coordinate2D newPos = item.position;
-                    Vector3Int oldPos = mySnake == 0 ? firstSnake.data.head : secondSnake.data.head;
+                    Vector3Int oldPos = item.id == 0 ? firstSnake.data.head : secondSnake.data.head;
                     int deltaX = newPos.x - oldPos.x;
                     int deltaY = newPos.y - oldPos.y;
 
                     if (item.id == 0) {
                         newFirstSnakeTranslation = new Vector2Int(deltaX, deltaY);
                     } else if (item.id == 1) {
-                        Debug.Log(deltaX + "-" + deltaY + " " + mySnake);
                         newSecondSnakeTranslation = new Vector2Int(deltaX, deltaY);
                     }
-
                 }
                 return;
            }
@@ -87,7 +95,6 @@ public class OnlineMultiMode : SnakeGameMode {
         
         if (newSecondSnakeTranslation != null) {
             secondSnake.Move(newSecondSnakeTranslation ?? new Vector2Int(0, 0));
-            Debug.Log("Second snake: " +secondSnake.data.head.x + " " +secondSnake.data.head.y);
             newSecondSnakeTranslation = null;
         }
 
@@ -100,8 +107,8 @@ public class OnlineMultiMode : SnakeGameMode {
         Vector3Int pos = mySnake == 0 ? firstSnake.data.head : secondSnake.data.head;
         int newX = pos.x + translation.x;
         int newY = pos.y + translation.y;
-            Debug.Log("Second : " +secondSnake.data.head.x + " " +secondSnake.data.head.y);
-        Debug.Log("new: " + newX + " " + newY);
+        //     Debug.Log("Second : " +secondSnake.data.head.x + " " +secondSnake.data.head.y);
+        // Debug.Log("new: " + newX + " " + newY);
         NewCoordinateData data = new NewCoordinateData(Profile.getInstance().nickName, newX, newY);
         PayloadWrapper<NewCoordinateData> payloadData = PayloadWrapper<NewCoordinateData>.FromData<NewCoordinateData>(data);
         SocketClient.send(payloadData.GetPayload());
@@ -119,6 +126,10 @@ public class OnlineMultiMode : SnakeGameMode {
     }
 
     public void Reset() {
+        ResetRoudnSignal signal = new ResetRoudnSignal();
+        PayloadWrapper<ResetRoudnSignal> payloadData = PayloadWrapper<ResetRoudnSignal>.FromData<ResetRoudnSignal>(signal);
+        SocketClient.send(payloadData.GetPayload());
+
         this.firstSnake.Reset();
         this.secondSnake.Reset();
     }

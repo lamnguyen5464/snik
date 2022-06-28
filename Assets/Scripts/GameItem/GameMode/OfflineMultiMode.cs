@@ -27,8 +27,17 @@ public class OfflineMultiMode : SnakeGameMode {
         firstSnake.OnClear(board.tilemap);
         secondSnake.OnClear(board.tilemap);
 
-        firstSnake.Move(firstSnake.OnHandleInput() ?? new Vector2Int(0, 0));
-        secondSnake.Move(secondSnake.OnHandleInput() ?? new Vector2Int(0, 0));
+        Vector2Int? firstSnakeInput = firstSnake.OnHandleInput();
+        if (firstSnakeInput != null) {
+            firstSnake.Move(firstSnakeInput ?? new Vector2Int(0, 0));
+            AudioManager.instance.PlayRandomNotes();
+        }
+        Vector2Int? secondSnakeInput = secondSnake.OnHandleInput();
+        if (secondSnakeInput != null) {
+            secondSnake.Move(secondSnakeInput ?? new Vector2Int(0, 0));
+            AudioManager.instance.PlayRandomNotes();
+        }
+
 
         firstSnake.OnDraw(board.tilemap);
         secondSnake.OnDraw(board.tilemap);

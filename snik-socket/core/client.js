@@ -99,8 +99,13 @@ class ClientManager {
         const { roomId, nickName = "", x, y } = data || {};
         const foundedRoom = roomManager.findRoom(roomId);
 
+        if (!foundedRoom.containClient(client.id)) {
+          roomManager.addClientToRoom(client.id, nickName, foundedRoom.id);
+        }
+
         foundedRoom.userData?.forEach((item, index) => {
           if (item.clientId === client.id) {
+            console.warn(`[modify] of ${client.id}`, { x, y });
             foundedRoom.userData[index].position = { x, y };
           }
         });
@@ -113,13 +118,35 @@ class ClientManager {
         break;
       }
 
+      case ActionType.RESET_GAME_ROUND: {
+        const { roomId } = data || {};
+        const foundedRoom = roomManager.findRoom(roomId);
+
+        this.sendTo(
+          foundedRoom.getClientIds(),
+          action.init(ActionType.RESET_GAME_ROUND, {})
+        );
+
+        break;
+      }
+
       case ActionType.START_GAME: {
         const { roomId, nickName = "" } = data;
         const foundedRoom = roomManager.findRoom(roomId);
 
         if (!foundedRoom.containClient(client.id)) {
           roomManager.addClientToRoom(client.id, nickName, foundedRoom.id);
+          // } else if (foundedRoom.userData.length >= 2) {
+          //   foundedRoom.userData = [];
+          //   roomManager.addClientToRoom(client.id, nickName, foundedRoom.id);
         }
+
+        setInterval(() => {
+          this.sendTo(
+            foundedRoom.getClientIds(),
+            action.init(ActionType.ON_MOVE, { items: foundedRoom.userData })
+          );
+        }, 200);
 
         client.send(
           JSON.stringify({

@@ -38,7 +38,8 @@ public class GetInputTextBtnClick : MonoBehaviour
 
     public void HandleCreateRoomClick()
     {
-        Debug.Log("input create " + inputUser.text);
+        AudioManager.instance.Play("ButtonClick");
+        Debug.Log("input " + inputUser.text);
         Profile.getInstance().nickName = inputUser.text;
         var model = new CreateRoomData(inputUser.text);
         PayloadWrapper<CreateRoomData> payload = PayloadWrapper<CreateRoomData>.FromData<CreateRoomData>(model);
