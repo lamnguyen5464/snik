@@ -25,6 +25,7 @@ public class PlayGround : MonoBehaviour
 
         snakesManger.Initialize(this);
 
+
    }
 
     private void Start()
@@ -36,10 +37,14 @@ public class PlayGround : MonoBehaviour
         foreach(var pos in positions) {
             Tile defaultBrick = colorItems[3].tile;
             tilemap.SetTile(pos, defaultBrick);
+            Debug.Log("Here1");
+            AudioManager.instance.Play("DownSnake");
             // check for + score
             int row = pos.y;
             if (this.IsLineFull(row)){
                 this.LineClear(row);
+                Debug.Log("Here2");
+                AudioManager.instance.Play("LineFull");
             }
         }
     }
@@ -57,7 +62,6 @@ public class PlayGround : MonoBehaviour
                 return false;
             }
         }
-
         return true;
     }
 

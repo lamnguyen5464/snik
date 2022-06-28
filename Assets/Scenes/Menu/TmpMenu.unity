@@ -1169,6 +1169,123 @@ Transform:
   m_Father: {fileID: 285591317}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1741226877
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1741226879}
+  - component: {fileID: 1741226878}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1741226878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741226877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e51771e43ca4d14cb9ae4081ba81ace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Do
+    clip: {fileID: 8300000, guid: f87bd54097d5f674fba73891755e43ee, type: 3}
+    volume: 0.505
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: background
+    clip: {fileID: 8300000, guid: c7ead0ab1431e404e8d4b6eac814249e, type: 3}
+    volume: 0.1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: Re
+    clip: {fileID: 8300000, guid: 2827a45b12b8f444092e5f31a266972a, type: 3}
+    volume: 0.171
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Mi
+    clip: {fileID: 8300000, guid: c409aa82b5abbb544a5d9c9d900d6da1, type: 3}
+    volume: 0.171
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Fa
+    clip: {fileID: 8300000, guid: 18ad5c80744e71f408ea7d7415d38961, type: 3}
+    volume: 0.171
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Sol
+    clip: {fileID: 8300000, guid: dfd01303a2903c44da29953f9ad354f6, type: 3}
+    volume: 0.171
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: La
+    clip: {fileID: 8300000, guid: b95d520e9e724af4ba0e47a40f49eeda, type: 3}
+    volume: 0.171
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Si
+    clip: {fileID: 8300000, guid: 3875dd31f8b369b4ea74be379e246512, type: 3}
+    volume: 0.171
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: ButtonClick
+    clip: {fileID: 8300000, guid: 14b0fa1ca41bf884a933de33c49b3999, type: 3}
+    volume: 0.505
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: LineFull
+    clip: {fileID: 8300000, guid: 5452af9fcad4c64469462f3f1dc2a12e, type: 3}
+    volume: 0.804
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: DownSnake
+    clip: {fileID: 8300000, guid: 1d1e187cd9ccd3e47b826782b8d2d831, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: SnakeDie
+    clip: {fileID: 8300000, guid: d818c685a2993254a8ea68b71a2bb876, type: 3}
+    volume: 0.799
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+--- !u!4 &1741226879
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741226877}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1753674700
 GameObject:
   m_ObjectHideFlags: 0

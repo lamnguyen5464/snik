@@ -53,6 +53,7 @@ public class Snake: GameItem{
 				this.manager.Reset();
 				break;
 			case OccupiedType.Crash:
+				AudioManager.instance.Play("SnakeDie");
 				this.Reset();
 				break;
 			default:
