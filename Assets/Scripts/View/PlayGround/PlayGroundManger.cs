@@ -12,7 +12,7 @@ public class PlayGroundManger : MonoBehaviour {
         // switch gameMode here
         switch(Profile.getInstance().currentGameMode){
             case 1:           
-                gameMode = new OfflineMultiMode();
+                gameMode = new OfflineSingleMode();
                 break;           
             case 2:           
                 gameMode = new OnlineMultiMode();
