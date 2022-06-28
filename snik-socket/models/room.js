@@ -5,7 +5,7 @@ class Room {
   constructor(ownerName) {
     this.ownerName = ownerName;
     this.id = generateID();
-    this.userData = []; // { id, clientId, nickName, position: {x, y} }
+    this.userData = []; // { id, clientId, nickName, position: {x, y}
   }
 
   addClient(clientId, nickName, position = {}) {
@@ -52,11 +52,13 @@ class RoomManager {
   addClientToRoom(clientId, nickName, roomId) {
     this.userIdToRoomId[clientId] = roomId;
     const room = this.findRoom(roomId);
+
     room.addClient(clientId, nickName);
   }
 
   findRoom(roomId) {
-    return this.rooms?.find((room) => room.id === roomId) ?? this.defaultRoom;
+    const index = this.rooms?.findIndex((room) => room.id === roomId);
+    return index !== -1 ? this.rooms[index] : this.defaultRoom;
   }
 }
 

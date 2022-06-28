@@ -1330,9 +1330,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 678388906}
-        m_TargetAssemblyTypeName: MultiModeMenu, Assembly-CSharp
-        m_MethodName: NavigateToFindRoom
+      - m_Target: {fileID: 678388907}
+        m_TargetAssemblyTypeName: GetInputTextBtnClick, Assembly-CSharp
+        m_MethodName: HandleNavigateJoinRoomClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2250,7 +2250,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 678388907}
         m_TargetAssemblyTypeName: GetInputTextBtnClick, Assembly-CSharp
-        m_MethodName: GetInputText
+        m_MethodName: HandleCreateRoomClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
