@@ -12,6 +12,7 @@ public class GetInputTextBtnClick : MonoBehaviour
     // Start is called before the first frame update
 
     public TMP_InputField inputUser;
+    public int signal = 0;
     void Start()
     {
         SocketClient.connect();
@@ -22,6 +23,8 @@ public class GetInputTextBtnClick : MonoBehaviour
             if(createRoomResponse.isValid()){
                 // CreateRoomResponse data = createRoomResponse.GetData();
 			    Debug.Log("Data: "  + createRoomResponse.GetData().roomId);
+                Profile.getInstance().roomId = createRoomResponse.GetData().roomId;
+                this.signal = 1;
             }
 
             PayloadWrapper<JoinRoomResponse> joinRoomResponse
@@ -38,13 +41,12 @@ public class GetInputTextBtnClick : MonoBehaviour
 
     public void HandleCreateRoomClick()
     {
-        AudioManager.instance.Play("ButtonClick");
         Debug.Log("input " + inputUser.text);
         Profile.getInstance().nickName = inputUser.text;
         var model = new CreateRoomData(inputUser.text);
         PayloadWrapper<CreateRoomData> payload = PayloadWrapper<CreateRoomData>.FromData<CreateRoomData>(model);
         SocketClient.send(payload.GetPayload());
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        Profile.getInstance().currentGameMode = 2;
     }
 
     public void HandleNavigateJoinRoomClick()
@@ -59,5 +61,12 @@ public class GetInputTextBtnClick : MonoBehaviour
         var model = new JoinRoomData (inputUser.text, Profile.getInstance().nickName);
         PayloadWrapper<JoinRoomData> payload = PayloadWrapper<JoinRoomData>.FromData<JoinRoomData>(model);
         SocketClient.send(payload.GetPayload());
+    }
+
+    public void Update()
+    {
+        if(signal == 1){
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        }
     }
 }

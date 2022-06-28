@@ -11,6 +11,6 @@ public class Profile {
 
 	public string clientId;
 	public string nickName = "Player 1";
-	public int currentGameMode;
-	public string roomId;
+	public int currentGameMode = 1;
+	public string roomId = "";
 }
