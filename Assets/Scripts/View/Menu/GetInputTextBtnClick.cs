@@ -17,7 +17,7 @@ public class GetInputTextBtnClick : MonoBehaviour
     {
         SocketClient.connect();
         Action<object, WebSocketSharp.MessageEventArgs> handler = (sender, eventData) => {
-			Debug.Log("From server: "  +eventData.Data);
+			//Debug.Log("From server: "  +eventData.Data);
             PayloadWrapper<CreateRoomResponse> createRoomResponse
                 = PayloadWrapper<CreateRoomResponse>.FromString<CreateRoomResponse>(eventData.Data);
             if(createRoomResponse.isValid()){
@@ -31,7 +31,7 @@ public class GetInputTextBtnClick : MonoBehaviour
                 = PayloadWrapper<JoinRoomResponse>.FromString<JoinRoomResponse>(eventData.Data);
             if(joinRoomResponse.isValid()){
                 // JoinRoomResponse data = JoinRoomResponse.GetData();
-			    Debug.Log("Data: "  + joinRoomResponse.GetData().msg);
+			    //Debug.Log("Data: "  + joinRoomResponse.GetData().msg);
             }
         };
         
@@ -41,7 +41,7 @@ public class GetInputTextBtnClick : MonoBehaviour
 
     public void HandleCreateRoomClick()
     {
-        Debug.Log("input " + inputUser.text);
+        //Debug.Log("input " + inputUser.text);
         Profile.getInstance().nickName = inputUser.text;
         var model = new CreateRoomData(inputUser.text);
         PayloadWrapper<CreateRoomData> payload = PayloadWrapper<CreateRoomData>.FromData<CreateRoomData>(model);
@@ -57,10 +57,12 @@ public class GetInputTextBtnClick : MonoBehaviour
 
     public void HandleJoinRoomClick()
     {
-        Debug.Log("input join" + inputUser.text);
+        //Debug.Log("input join" + inputUser.text);
         var model = new JoinRoomData (inputUser.text, Profile.getInstance().nickName);
         PayloadWrapper<JoinRoomData> payload = PayloadWrapper<JoinRoomData>.FromData<JoinRoomData>(model);
         SocketClient.send(payload.GetPayload());
+        Profile.getInstance().currentGameMode = 2;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
     }
 
     public void Update()

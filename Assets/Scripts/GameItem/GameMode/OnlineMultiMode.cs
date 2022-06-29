@@ -9,7 +9,7 @@ public class OnlineMultiMode : SnakeGameMode {
     private bool isStarted;
     private int mySnake = 0;
     private Snake firstSnake;
-    private Snake secondSnake;
+    private SecondSnake secondSnake;
 
     private Vector2Int? newFirstSnakeTranslation = null;
     private Vector2Int? newSecondSnakeTranslation = null;
@@ -18,7 +18,7 @@ public class OnlineMultiMode : SnakeGameMode {
         this.board = board;
         this.isStarted = false;
         firstSnake = new Snake(board, this, -2);
-        secondSnake = new Snake(board, this, 2);
+        secondSnake = new SecondSnake(board, this, 2);
 		Profile.getInstance().nickName = "user_01";
     }
 
@@ -26,7 +26,7 @@ public class OnlineMultiMode : SnakeGameMode {
         this.emitStartSignal();
 
         Action<object, WebSocketSharp.MessageEventArgs> handler = (sender, eventData) => {
-			Debug.Log("From server: "  +eventData.Data);
+			//Debug.Log("From server: "  +eventData.Data);
 
             PayloadWrapper<StartSignalData> startSignalData= PayloadWrapper<StartSignalData>.FromString<StartSignalData>(eventData.Data);
             if (startSignalData.isValid()) {
@@ -53,8 +53,6 @@ public class OnlineMultiMode : SnakeGameMode {
                 OnMoveData data =  onMovePayload.GetData();
 				OnMoveData.UserItem[] items = data.items;
                 
-                // ScoringText.name_1.text = "Datttt";
-
                 foreach (var item in items){
 				    Coordinate2D newPos = item.position;
                     Vector3Int oldPos = item.id == 0 ? firstSnake.data.head : secondSnake.data.head;
@@ -63,8 +61,10 @@ public class OnlineMultiMode : SnakeGameMode {
 
                     if (item.id == 0) {
                         newFirstSnakeTranslation = new Vector2Int(deltaX, deltaY);
+                        ScoringText.instance.changeNickname(firstSnake.data.nickname);
                     } else if (item.id == 1) {
                         newSecondSnakeTranslation = new Vector2Int(deltaX, deltaY);
+                        ScoringText.instance.changeSecondNickname(secondSnake.data.nickname);
                     }
                 }
                 return;
@@ -107,8 +107,8 @@ public class OnlineMultiMode : SnakeGameMode {
         Vector3Int pos = mySnake == 0 ? firstSnake.data.head : secondSnake.data.head;
         int newX = pos.x + translation.x;
         int newY = pos.y + translation.y;
-        //     Debug.Log("Second : " +secondSnake.data.head.x + " " +secondSnake.data.head.y);
-        // Debug.Log("new: " + newX + " " + newY);
+        //     //Debug.Log("Second : " +secondSnake.data.head.x + " " +secondSnake.data.head.y);
+        // //Debug.Log("new: " + newX + " " + newY);
         NewCoordinateData data = new NewCoordinateData(Profile.getInstance().nickName, newX, newY);
         PayloadWrapper<NewCoordinateData> payloadData = PayloadWrapper<NewCoordinateData>.FromData<NewCoordinateData>(data);
         SocketClient.send(payloadData.GetPayload());

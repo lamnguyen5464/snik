@@ -37,9 +37,9 @@ public class AudioManager : MonoBehaviour
         if (s == null) {
             return;
         }
-        Debug.Log("Sound is playing :D");
-        Debug.Log(s.name);
-        Debug.Log(s.volume);
+        //Debug.Log("Sound is playing :D");
+        //Debug.Log(s.name);
+        //Debug.Log(s.volume);
         s.source.Play();
     }
 

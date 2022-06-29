@@ -10,4 +10,5 @@ public interface GameItem {
 	Vector2Int? OnHandleInput();
 	OccupiedType checkOccupation(Tilemap tilemap, RectInt bounds);
 	List<Vector3Int> GetPositionsToSettleDown();
+	void OnIncreaseScore();
 }

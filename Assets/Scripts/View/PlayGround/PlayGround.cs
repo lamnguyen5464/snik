@@ -9,6 +9,7 @@ public class PlayGround : MonoBehaviour
     public PlayGroundManger snakesManger { get; private set; }
     public Vector2Int boardSize;
     public TileColorItem[] colorItems;
+    private ScoringText scoringText;
 
     public RectInt Bounds {
         get
@@ -22,9 +23,8 @@ public class PlayGround : MonoBehaviour
     {
         tilemap = GetComponentInChildren<Tilemap>();
         snakesManger = GetComponentInChildren<PlayGroundManger>();
-
+        scoringText = GetComponentInChildren<ScoringText>();
         snakesManger.Initialize(this);
-
    }
 
     private void Start()
@@ -39,6 +39,8 @@ public class PlayGround : MonoBehaviour
             // check for + score
             int row = pos.y;
             if (this.IsLineFull(row)){
+                gameItem.OnIncreaseScore();
+                Debug.Log(gameItem);
                 this.LineClear(row);
             }
         }
