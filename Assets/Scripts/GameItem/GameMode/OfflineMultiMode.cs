@@ -11,8 +11,8 @@ public class OfflineMultiMode : SnakeGameMode {
 
     public void Initialize(PlayGround board) {
         this.board = board;
-        firstSnake = new Snake(board, this, 2);
-        secondSnake = new SecondSnake(board, this, -2);
+        firstSnake = new Snake(board, this, -2);
+        secondSnake = new SecondSnake(board, this, 2);
     }
 
     public void Start() {
