@@ -12,10 +12,11 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public void PlaySingleModeOnline()
+    public void PlayMultiModeOffline()
     {
         //AudioManager.instance.Play("ButtonClick");
-        Profile.getInstance().currentGameMode = 2;
+        Profile.getInstance().currentGameMode = 3;
+        Debug.Log(Profile.getInstance().currentGameMode);  
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);        
     }
 
