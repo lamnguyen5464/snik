@@ -104,7 +104,7 @@ public class Snake: GameItem{
 
 	public Vector2Int? OnHandleInput() {
 		this.swipeManager.Update();
-		Vector2Int? translation = KeyUtils.GetBasicDirectionOnArrow();
+		Vector2Int? translation = KeyUtils.GetBasicDirectionOnASWD();
 		return translation;
 	}
 

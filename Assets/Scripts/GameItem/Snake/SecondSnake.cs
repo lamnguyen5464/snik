@@ -6,7 +6,7 @@ public class SecondSnake : Snake {
 	}
 
 	public Vector2Int? OnHandleInput() {
-		Vector2Int? translation = KeyUtils.GetBasicDirectionOnASWD();
+		Vector2Int? translation = KeyUtils.GetBasicDirectionOnArrow();
 		return translation;
 	}
 	public override void OnIncreaseScore() {

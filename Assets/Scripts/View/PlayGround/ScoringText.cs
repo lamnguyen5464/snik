@@ -11,6 +11,7 @@ public class ScoringText : MonoBehaviour
     public TMP_Text name_2;
     public TMP_Text score_1;
     public TMP_Text score_2;
+    public TMP_Text roomId;
     public static ScoringText instance;
     void Awake()
     {
@@ -18,6 +19,7 @@ public class ScoringText : MonoBehaviour
         score_1.text = "0";
         name_2.text = "User 2";
         score_2.text = "0";
+        roomId.text = Profile.getInstance().roomId;
         if (instance == null)
             instance = this;
     }
@@ -36,5 +38,9 @@ public class ScoringText : MonoBehaviour
     public void applySingleMode() {
         score_2.text="";
         name_2.text="";
+    }
+    public void applyOfflineMode()
+    {
+        roomId.text = "";
     }
 }

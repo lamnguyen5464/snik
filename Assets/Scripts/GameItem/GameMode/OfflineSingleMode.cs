@@ -17,6 +17,7 @@ public class OfflineSingleMode : SnakeGameMode {
         firstSnakeInput = new Vector2Int(0, -1);
         isLose = false;
         ScoringText.instance.applySingleMode();
+        ScoringText.instance.applyOfflineMode();
     }
 
     public void Start() {
