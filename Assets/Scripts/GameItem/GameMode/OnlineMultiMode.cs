@@ -11,6 +11,9 @@ public class OnlineMultiMode : SnakeGameMode {
     private Snake firstSnake;
     private SecondSnake secondSnake;
 
+    private string firstName = "";
+    private string secondName = "";
+
     private Vector2Int? newFirstSnakeTranslation = null;
     private Vector2Int? newSecondSnakeTranslation = null;
 
@@ -26,7 +29,7 @@ public class OnlineMultiMode : SnakeGameMode {
         this.emitStartSignal();
 
         Action<object, WebSocketSharp.MessageEventArgs> handler = (sender, eventData) => {
-			//Debug.Log("From server: "  +eventData.Data);
+			Debug.Log("From server: "  +eventData.Data);
 
             PayloadWrapper<StartSignalData> startSignalData= PayloadWrapper<StartSignalData>.FromString<StartSignalData>(eventData.Data);
             if (startSignalData.isValid()) {
@@ -54,6 +57,7 @@ public class OnlineMultiMode : SnakeGameMode {
 				OnMoveData.UserItem[] items = data.items;
                 
                 foreach (var item in items){
+                    Debug.Log(item.nickName);
 				    Coordinate2D newPos = item.position;
                     Vector3Int oldPos = item.id == 0 ? firstSnake.data.head : secondSnake.data.head;
                     int deltaX = newPos.x - oldPos.x;
@@ -61,10 +65,10 @@ public class OnlineMultiMode : SnakeGameMode {
 
                     if (item.id == 0) {
                         newFirstSnakeTranslation = new Vector2Int(deltaX, deltaY);
-                        ScoringText.instance.changeNickname(firstSnake.data.nickname);
+                        firstName = item.nickName;
                     } else if (item.id == 1) {
                         newSecondSnakeTranslation = new Vector2Int(deltaX, deltaY);
-                        ScoringText.instance.changeSecondNickname(secondSnake.data.nickname);
+                        secondName = item.nickName;
                     }
                 }
                 return;
@@ -78,6 +82,16 @@ public class OnlineMultiMode : SnakeGameMode {
     public void Update() {
         if (firstSnake == null || secondSnake == null || !isStarted) {
             return;
+        }
+
+        if (firstName != "_") {
+            ScoringText.instance.changeNickname(firstName);
+            firstName = "_";
+        }
+
+        if (secondName != "_") {
+            ScoringText.instance.changeSecondNickname(secondName);
+            secondName = "_";
         }
 
         firstSnake.OnClear(board.tilemap);

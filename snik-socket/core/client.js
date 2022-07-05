@@ -141,16 +141,16 @@ class ClientManager {
           //   roomManager.addClientToRoom(client.id, nickName, foundedRoom.id);
         }
 
-        if (foundedRoom.userData?.length < 2) {
-          break;
-        }
+        // if (foundedRoom.userData?.length < 2) {
+        //   break;
+        // }
 
         setInterval(() => {
           this.sendTo(
             foundedRoom.getClientIds(),
             action.init(ActionType.ON_MOVE, { items: foundedRoom.userData })
           );
-        }, 200);
+        }, 300);
 
         client.send(
           JSON.stringify({
