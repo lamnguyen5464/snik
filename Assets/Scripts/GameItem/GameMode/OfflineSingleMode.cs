@@ -6,17 +6,17 @@ using UnityEngine;
 public class OfflineSingleMode : SnakeGameMode {
     // Start is called before the first frame update
     private PlayGround board;
-    private Snake firstSnake;
-    private SecondSnake secondSnake;
+    private SecondSnake firstSnake;
     Vector2Int firstSnakeInput;
     float countDelay = 0;
     bool isLose;
 
     public void Initialize(PlayGround board) {
         this.board = board;
-        firstSnake = new Snake(board, this, 0);
+        firstSnake = new SecondSnake(board, this, 0);
         firstSnakeInput = new Vector2Int(0, -1);
         isLose = false;
+        ScoringText.instance.applySingleMode();
     }
 
     public void Start() {
@@ -29,19 +29,17 @@ public class OfflineSingleMode : SnakeGameMode {
         }
 
         if (isLose) {
-            Debug.Log("Game over!");
+            //Debug.Log("Game over!");
             return;
         }
 
         countDelay += Time.deltaTime;
 
-        Debug.Log(countDelay);
-
         firstSnake.OnClear(board.tilemap);
 
         firstSnakeInput = firstSnake.OnHandleInput() ?? firstSnakeInput;
 
-        if (countDelay > 0.3) {
+        if (countDelay > 0.2) {
             countDelay = 0;
             firstSnake.Move(firstSnakeInput);
             AudioManager.instance.PlayRandomNotes();

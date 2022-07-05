@@ -59,10 +59,17 @@ class ClientManager {
 
     switch (_action) {
       case ActionType.CREATE_ROOM: {
-        const { roomOwnerName } = data || {};
-        const newRoom = roomManager.createRoom(roomOwnerName);
-        roomManager.addClientToRoom(client.id, roomOwnerName, {}, newRoom.id);
-        client.send(action.init(ActionType.CREATE_ROOM, newRoom.id));
+        const { nickName } = data || {};
+        const newRoom = roomManager.createRoom(nickName);
+        roomManager.addClientToRoom(client.id, nickName, newRoom.id);
+        client.send(
+          JSON.stringify({
+            action: ActionType.CREATE_ROOM,
+            payload: JSON.stringify({
+              roomId: newRoom.id,
+            }),
+          })
+        );
         break;
       }
       case ActionType.FIND_ROOM: {
@@ -72,17 +79,18 @@ class ClientManager {
         break;
       }
       case ActionType.JOIN_ROOM: {
-        const { roomId, userName } = data || {};
+        const { roomId, nickName } = data || {};
         const foundedRoom = roomManager.findRoom(roomId);
-        // if (founded.ownerName === userName || founded.userName !== null) {
+        console.log(foundedRoom.getClientIds());
+        // if (founded.ownerName === nickName || founded.nickName !== null) {
         //   client.send(action.init(ActionType.FIND_ROOM, "Cannot join room"));
         // }
         // foundedRoom.clientIds.push(client.id);
-        // foundedRoom.joinRoom(userName);
-        roomManager.addClientToRoom(client.id, userName, {}, newRoom.id);
+        // foundedRoom.joinRoom(nickName);
+        roomManager.addClientToRoom(client.id, nickName, roomId);
         this.sendTo(
-          foundedRoom.clientIds,
-          action.init(ActionType.USER_JOINED, userName + "has joined!")
+          foundedRoom.getClientIds(),
+          action.init(ActionType.JOIN_ROOM, { msg: nickName + "has joined!" })
         );
         break;
       }

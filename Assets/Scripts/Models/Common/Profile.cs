@@ -1,5 +1,5 @@
 
-
+using UnityEngine;
 public class Profile {
 	private static Profile? instance = null;
 	public static Profile getInstance() {
@@ -10,6 +10,7 @@ public class Profile {
 	}
 
 	public string clientId;
-	public string nickName;
-	public int currentGameMode;
+	public string nickName = "Player 1";
+	public int currentGameMode = 1;
+	public string roomId = "";
 }

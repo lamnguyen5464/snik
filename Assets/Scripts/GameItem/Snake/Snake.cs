@@ -25,10 +25,13 @@ public class Snake: GameItem{
 	}
 
 	public void Reset() {
-		Tile tileColor = this.board.colorItems[this.atColumn < 0 ? 0 : 1].tile;
+		Tile tileColor = this.board.colorItems[this.atColumn <= 0 ? 0 : 1].tile;
 		this.data = new SnakeData(tileColor, 5, this.atColumn);
 	}
-
+	public virtual void OnIncreaseScore() {
+		++this.data.score;
+		ScoringText.instance.changeScore(this.data.score);
+	}
 	public void Move(Vector2Int dir) {
 		bool isEmpty = dir.x == 0 && dir.y == 0;
 		bool isConflict = latestDirection != null && (latestDirection.x + dir.x) == 0 && (latestDirection.y + dir.y) == 0;
@@ -43,14 +46,16 @@ public class Snake: GameItem{
         newPosition.y += dir.y;
 		this.data.nextHead = newPosition;
 		OccupiedType occupiedType = this.checkOccupation(board.tilemap, board.Bounds);
-		Debug.Log("occupiedType: " + occupiedType + " " +dir.x + " " + dir.y);
+		//Debug.Log("occupiedType: " + occupiedType + " " +dir.x + " " + dir.y);
 		switch (occupiedType) {
 			case OccupiedType.None:
 				this.data.MoveTo(newPosition);
 				break;
 			case OccupiedType.Built:
 				this.board.OnSettleDown(this);
+				int scoreBefore = this.data.score;
 				this.manager.Reset();
+				this.data.score = scoreBefore;
 				break;
 			case OccupiedType.Crash:
 				this.Reset();

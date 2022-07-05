@@ -9,4 +9,8 @@ public class SecondSnake : Snake {
 		Vector2Int? translation = KeyUtils.GetBasicDirectionOnASWD();
 		return translation;
 	}
+	public override void OnIncreaseScore() {
+		++this.data.score;
+		ScoringText.instance.changeSecondScore(this.data.score);
+	}
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayGroundManger : MonoBehaviour {
     // Start is called before the first frame update
@@ -10,12 +11,24 @@ public class PlayGroundManger : MonoBehaviour {
 
     public void Initialize(PlayGround board) {
         // switch gameMode here
-
-        gameMode = new OfflineSingleMode();
+        switch(Profile.getInstance().currentGameMode){
+            case 1:           
+                gameMode = new OfflineSingleMode();
+                break;           
+            case 2:           
+                gameMode = new OnlineMultiMode();
+                break;           
+            case 3:   { 
+     
+                gameMode = new OfflineMultiMode();
+                break;}
+            default: 
+                gameMode = new OfflineSingleMode();
+                break;      
+        }
         // gameMode = new OnlineMultiMode();
         // gameMode = new OfflineMultiMode();
         gameMode.Initialize(board);
-
         FindObjectOfType<AudioManager>().Play("background");
     }
 

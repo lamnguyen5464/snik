@@ -17,12 +17,12 @@ public class SocketClient
 
         //     PayloadWrapper<TestModel> payload = PayloadWrapper<TestModel>.FromString<TestModel>(rawData);
 
-        //     Debug.Log(e.Data);
-        //     Debug.Log(payload.GetPayload());
-        //     Debug.Log(payload.action);
+        //     //Debug.Log(e.Data);
+        //     //Debug.Log(payload.GetPayload());
+        //     //Debug.Log(payload.action);
         //     TestModel data = payload.GetData();
-        //     Debug.Log(data.varA);
-        //     Debug.Log(data.varB);
+        //     //Debug.Log(data.varA);
+        //     //Debug.Log(data.varB);
 
         // };
     }
@@ -52,7 +52,7 @@ public class SocketClient
         // ws.Send(payload.GetPayload());
 
         // PayloadWrapper<TestModel> payload2 = PayloadWrapper<TestModel>.FromString<TestModel>(payload.GetPayload());
-        // Debug.Log(payload2.GetData().varA + " " + payload2.GetData().varB);
+        // //Debug.Log(payload2.GetData().varA + " " + payload2.GetData().varB);
 
     }
 

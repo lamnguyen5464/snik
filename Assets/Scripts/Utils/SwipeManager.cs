@@ -70,7 +70,7 @@ public class SwipeManager
         //Check if Vertical swipe
         if (verticalMove() > SWIPE_THRESHOLD && verticalMove() > horizontalValMove())
         {
-            //Debug.Log("Vertical");
+            ////Debug.Log("Vertical");
             if (fingerDown.y - fingerUp.y > 0)//up swipe
             {
                 OnSwipeUp();
@@ -85,7 +85,7 @@ public class SwipeManager
         //Check if Horizontal swipe
         else if (horizontalValMove() > SWIPE_THRESHOLD && horizontalValMove() > verticalMove())
         {
-            //Debug.Log("Horizontal");
+            ////Debug.Log("Horizontal");
             if (fingerDown.x - fingerUp.x > 0)//Right swipe
             {
                 OnSwipeRight();
@@ -100,7 +100,7 @@ public class SwipeManager
         //No Movement at-all
         else
         {
-            //Debug.Log("No Swipe!");
+            ////Debug.Log("No Swipe!");
         }
     }
 
@@ -117,25 +117,25 @@ public class SwipeManager
     //////////////////////////////////CALLBACK FUNCTIONS/////////////////////////////
     void OnSwipeUp()
     {
-        Debug.Log("Swipe UP");
+        //Debug.Log("Swipe UP");
         this.handler.onSwipeUp();
     }
 
     void OnSwipeDown()
     {
-        Debug.Log("Swipe Down");
+        //Debug.Log("Swipe Down");
         this.handler.onSwipeDown();
     }
 
     void OnSwipeLeft()
     {
-        Debug.Log("Swipe Left");
+        //Debug.Log("Swipe Left");
         this.handler.onSwipeLeft();
     }
 
     void OnSwipeRight()
     {
-        Debug.Log("Swipe Rifht");
+        //Debug.Log("Swipe Rifht");
         this.handler.onSwipeRight();
     }
 }
