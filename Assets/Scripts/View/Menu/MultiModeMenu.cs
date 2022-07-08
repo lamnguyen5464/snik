@@ -13,7 +13,7 @@ public class MultiModeMenu : MonoBehaviour
 
     public void NavigateBack()
     {
-        AudioManager.instance.Play("ButtonClick");
+        //AudioManager.instance.Play("ButtonClick");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
     }
 
