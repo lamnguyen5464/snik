@@ -1,11 +1,12 @@
 # Snik
 
 ## Members
-Student’s Name	              Student’s ID
-Bùi Quang Huy	                19125047
-Nguyễn Thành Đạt	            19125021
-Nguyễn Trường Lâm	            19125101
-Nguyễn Công Tài	              19125120
+```
+Bùi Quang Huy - 19125047
+Nguyễn Thành Đạt - 19125021
+Nguyễn Trường Lâm - 19125101
+Nguyễn Công Tài	- 19125120
+```
 
 ## Brief Introduction
 > Based on the fundamentals of two classical games named Snake and Tetris, we come up with the idea to create the combination from both of them to create Snik.
