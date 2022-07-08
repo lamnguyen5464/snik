@@ -15,7 +15,6 @@ public class GetInputTextBtnClick : MonoBehaviour
     public int signal = 0;
     void Start()
     {
-        SocketClient.connect();
         Action<object, WebSocketSharp.MessageEventArgs> handler = (sender, eventData) => {
 			//Debug.Log("From server: "  +eventData.Data);
             PayloadWrapper<CreateRoomResponse> createRoomResponse

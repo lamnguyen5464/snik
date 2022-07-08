@@ -97,7 +97,7 @@ class ClientManager {
 
       case ActionType.NEW_COORDINATE: {
         const { roomId, nickName = "", x, y } = data || {};
-        const foundedRoom = roomManager.findRoom(roomId);
+        const foundedRoom = roomManager.findRoom("roomId");
 
         if (!foundedRoom.containClient(client.id)) {
           roomManager.addClientToRoom(client.id, nickName, foundedRoom.id);
@@ -120,7 +120,7 @@ class ClientManager {
 
       case ActionType.RESET_GAME_ROUND: {
         const { roomId } = data || {};
-        const foundedRoom = roomManager.findRoom(roomId);
+        const foundedRoom = roomManager.findRoom("roomId");
 
         this.sendTo(
           foundedRoom.getClientIds(),
@@ -132,7 +132,8 @@ class ClientManager {
 
       case ActionType.START_GAME: {
         const { roomId, nickName = "" } = data;
-        const foundedRoom = roomManager.findRoom(roomId);
+        // const foundedRoom = roomManager.findRoom(roomId);
+        const foundedRoom = roomManager.findRoom("roomId");
 
         if (!foundedRoom.containClient(client.id)) {
           roomManager.addClientToRoom(client.id, nickName, foundedRoom.id);
@@ -150,7 +151,7 @@ class ClientManager {
             foundedRoom.getClientIds(),
             action.init(ActionType.ON_MOVE, { items: foundedRoom.userData })
           );
-        }, 300);
+        }, 100);
 
         client.send(
           JSON.stringify({

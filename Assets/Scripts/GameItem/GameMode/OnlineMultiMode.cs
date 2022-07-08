@@ -29,7 +29,7 @@ public class OnlineMultiMode : SnakeGameMode {
         this.emitStartSignal();
 
         Action<object, WebSocketSharp.MessageEventArgs> handler = (sender, eventData) => {
-			Debug.Log("From server: "  +eventData.Data);
+			// Debug.Log("From server: "  +eventData.Data);
 
             PayloadWrapper<StartSignalData> startSignalData= PayloadWrapper<StartSignalData>.FromString<StartSignalData>(eventData.Data);
             if (startSignalData.isValid()) {
