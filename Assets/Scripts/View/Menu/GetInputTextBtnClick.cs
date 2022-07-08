@@ -62,6 +62,7 @@ public class GetInputTextBtnClick : MonoBehaviour
         PayloadWrapper<JoinRoomData> payload = PayloadWrapper<JoinRoomData>.FromData<JoinRoomData>(model);
         SocketClient.send(payload.GetPayload());
         Profile.getInstance().currentGameMode = 2;
+        Profile.getInstance().roomId = inputUser.text;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
     }
 

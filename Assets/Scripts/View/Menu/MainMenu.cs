@@ -16,8 +16,8 @@ public class MainMenu : MonoBehaviour
     {
         AudioManager.instance.Play("ButtonClick");
         Profile.getInstance().currentGameMode = 3;
-        Debug.Log(Profile.getInstance().currentGameMode);  
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);        
+        Debug.Log(Profile.getInstance().currentGameMode);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void NavigateToMultiModeMenu()
