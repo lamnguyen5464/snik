@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public void Awake() {
+        AudioManager.instance.Play("background");
+    }
+
     public void PlaySingleMode()
     {
         AudioManager.instance.Play("ButtonClick");

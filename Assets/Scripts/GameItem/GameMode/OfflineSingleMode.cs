@@ -6,14 +6,14 @@ using UnityEngine;
 public class OfflineSingleMode : SnakeGameMode {
     // Start is called before the first frame update
     private PlayGround board;
-    private SecondSnake firstSnake;
+    private Snake firstSnake;
     Vector2Int firstSnakeInput;
     float countDelay = 0;
     bool isLose;
 
     public void Initialize(PlayGround board) {
         this.board = board;
-        firstSnake = new SecondSnake(board, this, 0);
+        firstSnake = new Snake(board, this, 0);
         firstSnakeInput = new Vector2Int(0, -1);
         isLose = false;
         ScoringText.instance.applySingleMode();

@@ -52,7 +52,6 @@ public class Snake: GameItem{
 				this.data.MoveTo(newPosition);
 				break;
 			case OccupiedType.Built:
-				Debug.Log("SnakeDown");
 				AudioManager.instance.Play("SnakeDown");
 				this.board.OnSettleDown(this);
 				int scoreBefore = this.data.score;
@@ -60,7 +59,6 @@ public class Snake: GameItem{
 				this.data.score = scoreBefore;
 				break;
 			case OccupiedType.Crash:
-				Debug.Log("SnakeCrash");
 				AudioManager.instance.Play("SnakeCrash");
 				this.Reset();
 				break;

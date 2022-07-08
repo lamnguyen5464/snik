@@ -39,6 +39,7 @@ public class PlayGround : MonoBehaviour
             // check for + score
             int row = pos.y;
             if (this.IsLineFull(row)){
+                AudioManager.instance.Play("ClearRow");
                 gameItem.OnIncreaseScore();
                 Debug.Log(gameItem);
                 this.LineClear(row);
